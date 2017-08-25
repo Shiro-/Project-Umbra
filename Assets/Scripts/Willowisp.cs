@@ -9,16 +9,20 @@ public class Willowisp : MonoBehaviour
     public float speed;
     [Tooltip("Wisp's max range from home")]
     public float range;
+    [Tooltip("Time between picking a new target point")]
     public float wanderT;
 
     private Rigidbody rb;
     private Vector3 moveForce;
+    private Vector3 wanderPoint;
+    private float maxSeek = 1.5f;
 
     // Use this for initialization
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
-        InvokeRepeating("ChangeDirection", 1.0f, wanderT);
+        InvokeRepeating("ChangeDirection", 0.0f, wanderT);
+        wanderPoint.y = home.y;
     }
 	
 	// Update is called once per frame
@@ -27,10 +31,24 @@ public class Willowisp : MonoBehaviour
 		
 	}
 
+    void FixedUpdate()
+    {
+        moveForce = (wanderPoint - rb.position) * speed * Time.deltaTime;
+        rb.AddForce(moveForce);
+    }
+
     void ChangeDirection ()
     {
-        Vector3 wanderPoint = new Vector3(home.x + Random.Range(-range, range), home.y, home.z + Random.Range(-range, range));
-        moveForce = (wanderPoint - rb.position) * speed;
-        rb.AddForce(moveForce);
+        //if (Mathf.Abs(rb.position.x - home.x) > range
+        //    || Mathf.Abs(rb.position.y - home.y) > range)
+        //{
+            wanderPoint.x = home.x + Random.Range(-range, range);
+            wanderPoint.z = home.z + Random.Range(-range, range);
+        //}
+        //else
+        //{
+        //    wanderPoint.x = rb.position.x + Random.Range(-dunno, dunno);
+        //    wanderPoint.z = rb.position.z + Random.Range(-dunno, dunno);
+        //}
     }
 }
