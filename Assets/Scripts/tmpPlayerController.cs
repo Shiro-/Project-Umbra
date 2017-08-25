@@ -40,7 +40,9 @@ public class tmpPlayerController : MonoBehaviour
             rb.transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
 
-        Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
-        rb.AddForce(movement * spd);
+        //Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
+        //rb.AddForce(movement * spd);
+
+        transform.Translate(moveX, 0.0f, moveZ);
     }
 }
