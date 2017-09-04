@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
         {
             for (int i = 0; i < ghostCount; i++)
             {
-                Instantiate(ghost, new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), 1, Random.Range(-spawnPosition.z, spawnPosition.z)), ghost.transform.rotation);
+                Instantiate(ghost, new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), ghost.transform.rotation);
                 yield return new WaitForSeconds(spawnTime);
             }
             break;
