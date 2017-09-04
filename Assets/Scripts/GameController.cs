@@ -12,9 +12,12 @@ public class GameController : MonoBehaviour
     public float spawnTime;
     public Vector3 spawnPosition;
 
+    private int check;
+
     // Use this for initialization
     void Start()
     {
+        check = 0;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -31,12 +34,15 @@ public class GameController : MonoBehaviour
                 Instantiate(ghost, new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), ghost.transform.rotation);
                 yield return new WaitForSeconds(spawnTime);
 
-                if(i == ghostCount)
-                {
-                    winLight.enabled = true;
-                }
+                check++;
+                print(check);
             }
-            break;
+
+            if (check == ghostCount)
+            {
+                winLight.enabled = true;
+                break;
+            }
         }
     }
 
