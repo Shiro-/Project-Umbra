@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
 
     public GameObject ghost;
+    public Light winLight;
     public int ghostCount;
     public float waitTime;
     public float spawnTime;
@@ -20,6 +21,7 @@ public class GameController : MonoBehaviour
     //https://docs.unity3d.com/Manual/InstantiatingPrefabs.html
     IEnumerator SpawnEnemies()
     {
+        winLight.enabled = false;
         yield return new WaitForSeconds(waitTime);
 
         while(true)
@@ -28,6 +30,11 @@ public class GameController : MonoBehaviour
             {
                 Instantiate(ghost, new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), ghost.transform.rotation);
                 yield return new WaitForSeconds(spawnTime);
+
+                if(i == ghostCount)
+                {
+                    winLight.enabled = true;
+                }
             }
             break;
         }

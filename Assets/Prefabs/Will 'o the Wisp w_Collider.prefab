@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d161502b98302f4bb1d8ebcf0a80698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  home: {x: 2, y: 3, z: 0}
+  home: {x: 2, y: 2, z: 0}
   speed: 2
   range: 3
   wanderT: 6
@@ -202,7 +202,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1747492615905542}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.1696047
