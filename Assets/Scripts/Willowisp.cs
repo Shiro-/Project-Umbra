@@ -15,7 +15,8 @@ public class Willowisp : MonoBehaviour
     private Rigidbody rb;
     private Vector3 moveForce;
     private Vector3 wanderPoint;
-    private float maxSeek = 1.5f;
+    //removed for now
+    //private float maxSeek = 1.5f;
 
     // Use this for initialization
     void Start ()

@@ -13,14 +13,17 @@ public class GameController : MonoBehaviour
     public float waitTime;
     public float spawnTime;
 
+    //figure how to spawn at different positions
     public Vector3 spawnPosition;
 
+    //change this later
     private int check;
 
     // Use this for initialization
     void Start()
     {
         check = 0;
+        //https://docs.unity3d.com/Manual/Coroutines.html
         StartCoroutine(SpawnEnemies());
     }
 
@@ -42,6 +45,13 @@ public class GameController : MonoBehaviour
                 print(check);
             }
 
+            //This should definitly be changed so that the light turns on when all the enemies are killed
+            //for now though we can leave it like this for testing purposes
+
+            //To add:
+            //Scoring
+            //player hp and enemy hp
+            //some other things
             if (check == enemyCount)
             {
                 winLight.enabled = true;

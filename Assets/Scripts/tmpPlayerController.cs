@@ -24,6 +24,7 @@ public class tmpPlayerController : MonoBehaviour
     //Called before Physics step
     void FixedUpdate()
     {
+        //this movement definitely needs a fix but for testing we use it
         //Getting inputs
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");

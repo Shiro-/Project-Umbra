@@ -5,6 +5,8 @@ using UnityEngine;
 public class tmpCollision : MonoBehaviour
 {
 
+    //this should also be considered for change
+    //i think
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Bullet")
