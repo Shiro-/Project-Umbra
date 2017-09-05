@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
     //Array enemies
     public GameObject[] enemies;
     public Light winLight;
+    //at some point we may want to have multiple lights in one room
+    //public Light[] Lights;
 
     public int enemyCount;
 
