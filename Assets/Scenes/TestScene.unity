@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 210230566}
   m_Layer: 0
   m_Name: tmpFloor
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 572684328}
   m_Layer: 0
   m_Name: tmpPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,8 +384,8 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 572684321}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -749,9 +749,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7723e4fd5f562cb438f229d6c7c10cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - {fileID: 1747492615905542, guid: a7d72ffbbe2ea8c418b7b869b0ec55a9, type: 2}
   winLight: {fileID: 1619284759}
-  enemyCount: 0
+  enemyCount: 2
   waitTime: 5
   spawnTime: 10
   spawnPosition: {x: 7, y: 2, z: 7}

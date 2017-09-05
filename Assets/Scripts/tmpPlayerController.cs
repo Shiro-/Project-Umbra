@@ -46,4 +46,16 @@ public class tmpPlayerController : MonoBehaviour
 
         transform.Translate(moveX, 0.0f, moveZ);
     }
+
+    //check collisions
+    private void OnTriggerEnter(Collider other)
+    {
+        //For now we will just destroy ourselves and the enemy
+        //for future reference we will have hp and other things
+        if(other.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
