@@ -749,9 +749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7723e4fd5f562cb438f229d6c7c10cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghost: {fileID: 1747492615905542, guid: a7d72ffbbe2ea8c418b7b869b0ec55a9, type: 2}
+  enemies: []
   winLight: {fileID: 1619284759}
-  ghostCount: 2
+  enemyCount: 0
   waitTime: 5
   spawnTime: 10
   spawnPosition: {x: 7, y: 2, z: 7}
