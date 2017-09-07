@@ -60,6 +60,9 @@ public class GameController : MonoBehaviour
                 winLight.enabled = true;
                 break;
             }
+
+            //For later reference:
+            //GameObject.FindWithTag("Enemy");
         }
     }
 }
