@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59e7fb1e65d1114a8ede62cf602fe79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 10
+  spd: 5
 --- !u!54 &572684323
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -460,13 +460,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 572684321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6c5d4418c3d594c8c239100d932ef0, type: 3}
+  m_Script: {fileID: 11500000, guid: adb85cff9341ca342bb0460b9bd58f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet_Emitter: {fileID: 353972272}
   Bullet: {fileID: 1187684684685426, guid: a6182f9b40e75c4408bdd0acc588e82a, type: 2}
-  Bullet_Forward_Force: 0
-  Bullet_Speed: 10
+  bulletSpeed: 20
+  fireRate: 0.4
+  maxRounds: 6
+  reloadSpeed: 0.45
+  interruptDelay: 0.5
 --- !u!1 &760825464
 GameObject:
   m_ObjectHideFlags: 0
