@@ -26,8 +26,8 @@ public class tmpPlayerController : MonoBehaviour
     {
         //this movement definitely needs a fix but for testing we use it
         //Getting inputs
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        //float moveX = Input.GetAxis("Horizontal");
+        //float moveZ = Input.GetAxis("Vertical");
 
         //Mouse aim/rotation
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -44,7 +44,7 @@ public class tmpPlayerController : MonoBehaviour
         //Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
         //rb.AddForce(movement * spd);
 
-        transform.Translate(moveX, 0.0f, moveZ);
+        //transform.Translate(moveX, 0.0f, moveZ);
     }
 
     //check collisions
