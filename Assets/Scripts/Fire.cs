@@ -23,7 +23,7 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButton("Fire1"))
         {
             //The Bullet instantiation happens here.
             GameObject Temporary_Bullet_Handler;
