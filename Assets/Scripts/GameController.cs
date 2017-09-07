@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
         winLight.enabled = false;
         yield return new WaitForSeconds(waitTime);
 
-        while(true)
+        while (true)
         {
             for (int i = 0; i < enemyCount; i++)
             {
@@ -44,8 +44,9 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(spawnTime);
 
                 check++;
-                print(check);
+                //print(check);
             }
+
 
             //This should definitly be changed so that the light turns on when all the enemies are killed
             //for now though we can leave it like this for testing purposes
