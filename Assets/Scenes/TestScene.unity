@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 1486139012}
   - component: {fileID: 1486139011}
   - component: {fileID: 1486139010}
+  - component: {fileID: 1486139015}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -630,6 +631,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &1486139015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1486139009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c6a77fdbaf97c4da151156a206cd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 572684321}
+  cameraPosition: {x: 0, y: 7, z: -10}
 --- !u!1 &1619284758
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,12 +764,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 1747492615905542, guid: a7d72ffbbe2ea8c418b7b869b0ec55a9, type: 2}
+  - {fileID: 1428549780731040, guid: dc2b493bc598eda46b2d0501f96e9d12, type: 2}
   winLight: {fileID: 1619284759}
   enemyCount: 2
   waitTime: 5
   spawnTime: 10
-  spawnPosition: {x: 7, y: 2, z: 7}
+  spawnPosition: {x: 7, y: 1, z: 7}
 --- !u!1 &1913773405
 GameObject:
   m_ObjectHideFlags: 0
