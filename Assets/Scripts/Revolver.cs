@@ -65,10 +65,8 @@ public class Revolver : MonoBehaviour
                 Destroy(tmpBulletHandler, 5.0f);
             }
         }
-    }
 
-    void FixedUpdate()
-    {
+        //Moved reloading to update and removed fixedupdate
         if (Input.GetKeyDown(KeyCode.R) && !reloading && currentRounds < maxRounds)
         {
             reloading = true;
@@ -76,7 +74,7 @@ public class Revolver : MonoBehaviour
         }
 
         if (reloading)
-        { 
+        {
             if (Time.time - rTime > reloadSpeed)
             {
                 currentRounds++;
@@ -88,6 +86,5 @@ public class Revolver : MonoBehaviour
                 reloading = false;
             }
         }
-
     }
 }
