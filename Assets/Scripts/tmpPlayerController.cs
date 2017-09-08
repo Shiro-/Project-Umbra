@@ -7,9 +7,6 @@ public class tmpPlayerController : MonoBehaviour
     //We need rigidbody for movement
     private Rigidbody rb;
 
-    public float spd;
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();

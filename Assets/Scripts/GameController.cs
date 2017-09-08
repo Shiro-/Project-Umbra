@@ -10,7 +10,8 @@ public class GameController : MonoBehaviour
     //at some point we may want to have multiple lights in one room
     //public Light[] Lights;
 
-    public int enemyCount;
+    public int initialEnemyCount;
+    public int randomEnemyCount;
 
     public float waitTime;
     public float spawnTime;
@@ -26,18 +27,34 @@ public class GameController : MonoBehaviour
     {
         check = 0;
         //https://docs.unity3d.com/Manual/Coroutines.html
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(InitialEnemySpawn());
+        StartCoroutine(RandomEnemySpawn());
+    }
+
+    //Initially, we want to spawn x amount of enemies before we randomly spawn them
+    //Subject to change in the future
+    IEnumerator InitialEnemySpawn()
+    {
+        //We want this to run before the RandomEnemySpawn
+        //There is probably a better solution but this will do for now
+        yield return new WaitForSeconds(1.0f);
+
+        //Spawn x enemies in random locations
+        for (int i = 0; i < initialEnemyCount; i++)
+        {
+            Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), Quaternion.identity);
+        }
     }
 
     //https://docs.unity3d.com/Manual/InstantiatingPrefabs.html
-    IEnumerator SpawnEnemies()
+    IEnumerator RandomEnemySpawn()
     {
         winLight.enabled = false;
         yield return new WaitForSeconds(waitTime);
 
         while (true)
         {
-            for (int i = 0; i < enemyCount; i++)
+            for (int i = 0; i < randomEnemyCount; i++)
             {
                 //Random ranges lol good joke
                 Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), Quaternion.identity);
@@ -55,7 +72,7 @@ public class GameController : MonoBehaviour
             //Scoring
             //player hp and enemy hp
             //some other things
-            if (check == enemyCount)
+            if (check == randomEnemyCount)
             {
                 winLight.enabled = true;
                 break;

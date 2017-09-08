@@ -11,13 +11,6 @@ public class tmpCameraController : MonoBehaviour
     public GameObject player;
     public Vector3 cameraPosition;
 
-    //more todo:
-    //increase the size of the room
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         //We want the camera to follow the position of the player

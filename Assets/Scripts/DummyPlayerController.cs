@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class DummyPlayerController : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         //If the player dies destroy the dummy controller
