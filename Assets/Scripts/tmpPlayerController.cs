@@ -7,6 +7,14 @@ public class tmpPlayerController : MonoBehaviour
     //We need rigidbody for movement
     private Rigidbody rb;
 
+    public Light flashlight;
+
+    //https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html
+    void Awake()
+    {
+        flashlight.enabled = false;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -15,7 +23,11 @@ public class tmpPlayerController : MonoBehaviour
     //Updates every frame
     void Update()
     {
-        
+        //https://docs.unity3d.com/ScriptReference/Input.GetKeyUp.html
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            flashlight.enabled = !flashlight.enabled;
+        }
     }
 
     //Called before Physics step
