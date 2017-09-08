@@ -61,10 +61,12 @@ public class tmpPlayerController : MonoBehaviour
     {
         //For now we will just destroy ourselves and the enemy
         //for future reference we will have hp and other things
-        if(other.tag == "Enemy")
+        if(other.tag == "WispEnemy")
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        //Changed tags to prepare for different enemies
+        //and also hp values for the player
     }
 }

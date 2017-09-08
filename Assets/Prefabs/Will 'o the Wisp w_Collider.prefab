@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 136822055435529018}
   m_Layer: 0
   m_Name: Will 'o the Wisp w_Collider
-  m_TagString: Enemy
+  m_TagString: WispEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
