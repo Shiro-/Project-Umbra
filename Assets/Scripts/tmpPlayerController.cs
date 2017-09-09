@@ -9,6 +9,8 @@ public class tmpPlayerController : MonoBehaviour
 
     public Light flashlight;
 
+    public int playerHP;
+
     //https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html
     void Awake()
     {
@@ -61,10 +63,17 @@ public class tmpPlayerController : MonoBehaviour
     {
         //For now we will just destroy ourselves and the enemy
         //for future reference we will have hp and other things
-        if(other.tag == "WispEnemy")
+        if(other.tag == "WispEnemy" && playerHP > 0)
         {
+            //Destroy(other.gameObject);
+            //Destroy(gameObject);
+            playerHP -= 10;
             Destroy(other.gameObject);
-            Destroy(gameObject);
+            if(playerHP == 0)
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
         }
         //Changed tags to prepare for different enemies
         //and also hp values for the player
