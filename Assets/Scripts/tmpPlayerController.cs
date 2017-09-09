@@ -10,11 +10,12 @@ public class tmpPlayerController : MonoBehaviour
     public Light flashlight;
 
     public int playerHP;
+    public float flashlightBat;
 
     //https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html
     void Awake()
     {
-        flashlight.enabled = false;
+        flashlight.enabled = !flashlight.enabled;
     }
 
     void Start()
@@ -26,9 +27,20 @@ public class tmpPlayerController : MonoBehaviour
     void Update()
     {
         //https://docs.unity3d.com/ScriptReference/Input.GetKeyUp.html
-        if (Input.GetKeyUp(KeyCode.F))
+        //This looks so bad and there is probably a better way to do this
+        if (Input.GetKeyUp(KeyCode.F) && flashlightBat > 0.0f)
         {
             flashlight.enabled = !flashlight.enabled;
+        }
+
+        if (flashlight.enabled && flashlightBat > 0.0f)
+        {
+            flashlightBat -= 0.01f;
+
+            if(flashlightBat <= 0.0f)
+            {
+                flashlight.enabled = !flashlight.enabled;
+            }
         }
     }
 
