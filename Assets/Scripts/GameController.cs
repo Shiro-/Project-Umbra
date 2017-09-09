@@ -21,14 +21,42 @@ public class GameController : MonoBehaviour
 
     //change this later
     private int check;
+    private int totalEnemyCount;
+    private bool win;
+
+    void Awake()
+    {
+        winLight.enabled = !winLight.enabled;
+    }
 
     // Use this for initialization
     void Start()
     {
         check = 0;
+        win = false;
+        totalEnemyCount = initialEnemyCount + randomEnemyCount;
         //https://docs.unity3d.com/Manual/Coroutines.html
         StartCoroutine(InitialEnemySpawn());
         StartCoroutine(RandomEnemySpawn());
+    }
+
+    void Update()
+    {
+
+        //There is probably a better way to do this
+        if (check == totalEnemyCount && GameObject.FindWithTag("WispEnemy") == null)
+        {
+            win = true;
+
+            if (win == true)
+            {
+                winLight.enabled = !winLight.enabled;
+                //Reset our checks so we never reach this point
+                //This will be changed in the future with something better
+                check = 0;
+                win = false;
+            }
+        }
     }
 
     //Initially, we want to spawn x amount of enemies before we randomly spawn them
@@ -43,43 +71,37 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < initialEnemyCount; i++)
         {
             Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), Quaternion.identity);
+
+            check++;
         }
+
+        yield break;
     }
 
     //https://docs.unity3d.com/Manual/InstantiatingPrefabs.html
     IEnumerator RandomEnemySpawn()
     {
-        winLight.enabled = false;
         yield return new WaitForSeconds(waitTime);
 
-        while (true)
+        for (int i = 0; i < randomEnemyCount; i++)
         {
-            for (int i = 0; i < randomEnemyCount; i++)
-            {
-                //Random ranges lol good joke
-                Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), Quaternion.identity);
-                yield return new WaitForSeconds(spawnTime);
+            //Random ranges lol good joke
+            Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), Quaternion.identity);
+            yield return new WaitForSeconds(spawnTime);
 
-                check++;
-                //print(check);
-            }
-
-
-            //This should definitly be changed so that the light turns on when all the enemies are killed
-            //for now though we can leave it like this for testing purposes
-
-            //To add:
-            //Scoring
-            //player hp and enemy hp
-            //some other things
-            if (check == randomEnemyCount)
-            {
-                winLight.enabled = true;
-                break;
-            }
-
-            //For later reference:
-            //GameObject.FindWithTag("Enemy");
+            check++;
+            //print(check);
         }
+
+        yield break;
+        //This should definitly be changed so that the light turns on when all the enemies are killed
+        //for now though we can leave it like this for testing purposes
+
+        //To add:
+        //Scoring
+        //player hp and enemy hp
+        //some other things
+        //For later reference:
+        //GameObject.FindWithTag("Enemy");
     }
 }

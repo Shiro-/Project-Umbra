@@ -1170,7 +1170,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1428549780731040, guid: dc2b493bc598eda46b2d0501f96e9d12, type: 2}
   winLight: {fileID: 1619284759}
-  initialEnemyCount: 10
+  initialEnemyCount: 2
   randomEnemyCount: 2
   waitTime: 5
   spawnTime: 10
