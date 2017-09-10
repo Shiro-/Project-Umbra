@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - WispEnemy
   - RevolverBullet
+  - tmpTag
   layers:
   - Default
   - TransparentFX
