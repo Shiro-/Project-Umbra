@@ -9,6 +9,7 @@ TagManager:
   - Environment
   - Wall
   - WispEnemy
+  - RevolverBullet
   layers:
   - Default
   - TransparentFX

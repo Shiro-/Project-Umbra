@@ -9,7 +9,10 @@ public class tmpCollision : MonoBehaviour
     //i think
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Bullet")
+
+        //Revolver bullet
+        //Preparing for the implementation other types of weapons
+        if(other.tag == "RevolverBullet")
         {
             Destroy(other.gameObject);
             Destroy(gameObject);

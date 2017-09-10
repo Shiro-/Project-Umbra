@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 1106573457}
-  playerHP: 100
+  playerHP: 30
   flashlightBat: 25
 --- !u!54 &572684323
 Rigidbody:
