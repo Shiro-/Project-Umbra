@@ -49,6 +49,10 @@ public class Revolver : MonoBehaviour
                 GameObject tmpBulletHandler;
                 tmpBulletHandler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
+                //Fx
+                //to be added soon
+                //Instantiate(bulletFx, some position, Quaternion.identity);
+
                 //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
                 //This is EASILY corrected here, you might have to rotate it from a different axis and or angle based on your particular mesh.
                 tmpBulletHandler.transform.Rotate(Vector3.left * 90);

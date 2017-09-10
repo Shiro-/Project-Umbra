@@ -92,6 +92,7 @@ public class tmpPlayerController : MonoBehaviour
         //and also hp values for the player
 
         //THIS IS FOR TESTING ONLY
+        //This will most likely not be here in the future
         if(other.tag == "tmpTag")
         {
             SceneManager.LoadScene("DarkScene");
