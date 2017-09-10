@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class tmpPlayerController : MonoBehaviour
 {
@@ -90,12 +89,5 @@ public class tmpPlayerController : MonoBehaviour
         }
         //Changed tags to prepare for different enemies
         //and also hp values for the player
-
-        //THIS IS FOR TESTING ONLY
-        //This will most likely not be here in the future
-        if(other.tag == "tmpTag")
-        {
-            SceneManager.LoadScene("DarkScene");
-        }
     }
 }

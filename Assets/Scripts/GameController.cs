@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -56,6 +57,14 @@ public class GameController : MonoBehaviour
                 check = 0;
                 win = !win;
             }
+        }
+
+        //Change scene moved here
+        //If you add additional scenes you need to add it to the build settings so we can load it
+        //File > Build Settings > Add Scene
+        if(winLight.enabled == true && Input.GetKeyUp(KeyCode.Space))
+        {
+            SceneManager.LoadScene("DarkScene");
         }
     }
 
