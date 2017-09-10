@@ -19,18 +19,18 @@ public class Willowisp : MonoBehaviour
     //private float maxSeek = 1.5f;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         InvokeRepeating("ChangeDirection", 0.0f, wanderT);
         wanderPoint.y = home.y;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+
+    }
 
     void FixedUpdate()
     {
@@ -38,13 +38,13 @@ public class Willowisp : MonoBehaviour
         rb.AddForce(moveForce);
     }
 
-    void ChangeDirection ()
+    void ChangeDirection()
     {
         //if (Mathf.Abs(rb.position.x - home.x) > range
         //    || Mathf.Abs(rb.position.y - home.y) > range)
         //{
-            wanderPoint.x = home.x + Random.Range(-range, range);
-            wanderPoint.z = home.z + Random.Range(-range, range);
+        wanderPoint.x = home.x + Random.Range(-range, range);
+        wanderPoint.z = home.z + Random.Range(-range, range);
         //}
         //else
         //{

@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         check = 0;
-        win = false;
+        win = !win;
         totalEnemyCount = initialEnemyCount + randomEnemyCount;
         //https://docs.unity3d.com/Manual/Coroutines.html
         StartCoroutine(InitialEnemySpawn());
@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
         //There is probably a better way to do this
         if (check == totalEnemyCount && GameObject.FindWithTag("WispEnemy") == null)
         {
-            win = true;
+            win = !win;
 
             if (win == true)
             {
@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
                 //Reset our checks so we never reach this point
                 //This will be changed in the future with something better
                 check = 0;
-                win = false;
+                win = !win;
             }
         }
     }
