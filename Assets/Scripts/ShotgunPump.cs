@@ -73,8 +73,13 @@ public class ShotgunPump : MonoBehaviour
                     tmpRB.useGravity = false;
 
                     tmpRB.velocity = transform.forward * bulletSpeed;
-                    tmpRB.velocity += transform.right * Random.Range(-spread, spread);
 
+                    //This ensures at least one pellet will always go down the middle
+                    if (i > 0)
+                    {
+                        tmpRB.velocity += transform.right * Random.Range(-spread, spread);
+                    }
+                    
                     //Bullets self destruct after x seconds
                     Destroy(tmpBulletHandler, 5.0f);
                 }
