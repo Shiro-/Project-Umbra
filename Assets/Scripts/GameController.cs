@@ -20,27 +20,11 @@ public class GameController : MonoBehaviour
     public float waitTime;
     public float spawnTime;
 
-    public float enemySpeed;
-    public float enemyHP;
-
     //change this later
     private int check;
     private int totalEnemyCount;
 
-    //This state stuff might be moved to enemycontroller
-    //subject to change
     private bool win;
-    private bool state;
-    private bool chase;
-    private bool attack;
-    private bool wander;
-
-    public enum State
-    {
-        chase,
-        attack,
-        wander
-    }
 
     void Awake()
     {
