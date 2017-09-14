@@ -11,19 +11,36 @@ public class GameController : MonoBehaviour
     //at some point we may want to have multiple lights in one room
     //public Light[] Lights;
 
+    //figure how to spawn at different positions
+    public Vector3 spawnPosition;
+
     public int initialEnemyCount;
     public int randomEnemyCount;
 
     public float waitTime;
     public float spawnTime;
 
-    //figure how to spawn at different positions
-    public Vector3 spawnPosition;
+    public float enemySpeed;
+    public float enemyHP;
 
     //change this later
     private int check;
     private int totalEnemyCount;
+
+    //This state stuff might be moved to enemycontroller
+    //subject to change
     private bool win;
+    private bool state;
+    private bool chase;
+    private bool attack;
+    private bool wander;
+
+    public enum State
+    {
+        chase,
+        attack,
+        wander
+    }
 
     void Awake()
     {
