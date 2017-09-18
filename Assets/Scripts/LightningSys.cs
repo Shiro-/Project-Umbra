@@ -12,6 +12,13 @@ public class LightningSys : MonoBehaviour
     public float minFlashTime;
     public float maxFlashTime;
 
+    public float multiDelay = 0.05f;
+ 
+    [Tooltip("Minimum flashes/strikes per interval")]
+    public int minStrikes;
+    [Tooltip("Maximum flashes/strikes per interval")]
+    public int maxStrikes;
+
     [Tooltip("X Rotation: Affects length of shadows on ground. Recommended range 5-45.")]
     public float minX;
     [Tooltip("X Rotation: Affects length of shadows on ground. Recommended range 5-45.")]
@@ -29,6 +36,9 @@ public class LightningSys : MonoBehaviour
     private float lastTime;
     private float onTime;
 
+    private int strikeCount;
+    private int strikeNum;
+
     private Transform t;
 
 	// Use this for initialization
@@ -44,21 +54,36 @@ public class LightningSys : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Time.time - lastTime > strikeT && flash.enabled == false)
+        if (flash.enabled == false)
         {
-            flash.enabled = true;
-            lastTime = Time.time;
+            //Turn on light if strikeT has elapsed
+            if (Time.time - lastTime > strikeT && strikeNum == strikeCount
+                //If there are multiple lightning strikes use multiDelay for timing
+                ||strikeNum < strikeCount && strikeNum > 0 && Time.time - lastTime > multiDelay + onTime)
+            { 
+                flash.enabled = true;
+                lastTime = Time.time;
+            }
+            
         }
         else if (flash.enabled == true && Time.time - lastTime > onTime)
         {
             flash.enabled = false;
-            StrikeSet();
+            strikeNum--;
+
+            //Set next lightning strike if this one is done
+            if (strikeNum <= 0)
+            {
+                StrikeSet();
+            }
         }
        
     }
 
     void StrikeSet()
     {
+        strikeCount = Random.Range(minStrikes, maxStrikes);
+        strikeNum = strikeCount;
         strikeT = Random.Range(minTimeToStrike, maxTimeToStrike);
         onTime = Random.Range(minFlashTime, maxFlashTime);
         rotX = Random.Range(minX, maxX);
