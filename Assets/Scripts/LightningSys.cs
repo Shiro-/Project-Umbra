@@ -59,13 +59,15 @@ public class LightningSys : MonoBehaviour
             //Turn on light if strikeT has elapsed
             if (Time.time - lastTime > strikeT && strikeNum == strikeCount
                 //If there are multiple lightning strikes use multiDelay for timing
-                ||strikeNum < strikeCount && strikeNum > 0 && Time.time - lastTime > multiDelay + onTime)
+                ||strikeNum < strikeCount && strikeNum > 0 
+                && Time.time - lastTime > multiDelay + onTime)
             { 
                 flash.enabled = true;
                 lastTime = Time.time;
             }
             
         }
+        //Turn off when onTime has elapsed
         else if (flash.enabled == true && Time.time - lastTime > onTime)
         {
             flash.enabled = false;
@@ -82,10 +84,17 @@ public class LightningSys : MonoBehaviour
 
     void StrikeSet()
     {
+        //Set number of flashes in next lightning strike
         strikeCount = Random.Range(minStrikes, maxStrikes);
         strikeNum = strikeCount;
+
+        //Time until next strike
         strikeT = Random.Range(minTimeToStrike, maxTimeToStrike);
+
+        //How long the light will be on
         onTime = Random.Range(minFlashTime, maxFlashTime);
+
+        //Set direction light is coming from
         rotX = Random.Range(minX, maxX);
         rotY = Random.Range(minY, maxY);
         t.SetPositionAndRotation(t.position, Quaternion.Euler(rotX, rotY, 0));
