@@ -31,4 +31,23 @@ public class EnemyController : MonoBehaviour
     {
         
     }
+
+    //Notes on what to do:
+    /*
+     * 
+     * For now we will have 1 other enemy (Subject to change)
+     * Unlike the wisp/ghost, it will probably have different states that determine what actions it will take
+     * For example:
+     * 
+     * Wander - The enemy wanders around aimlessly unless triggered by the player
+     * Chase - If the player comes within a certain distance of the enemy or
+     *       - If the player shines the flashlight at the enemy or
+     *       - If the player makes too much noise
+     *       - Then the enemy will start chasing the player
+     *       (These are subject to change)
+     *       - If the enemy is close enough to the player, the player will take damage
+     * 
+     * Other things to be determined
+     * 
+     */
 }
