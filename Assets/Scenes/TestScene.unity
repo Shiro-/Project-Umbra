@@ -927,7 +927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1331921224
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,11 +1170,11 @@ MonoBehaviour:
   enemies:
   - {fileID: 1428549780731040, guid: dc2b493bc598eda46b2d0501f96e9d12, type: 2}
   winLight: {fileID: 1619284759}
+  spawnPosition: {x: 15, y: 1, z: 15}
   initialEnemyCount: 2
   randomEnemyCount: 2
   waitTime: 5
   spawnTime: 10
-  spawnPosition: {x: 15, y: 1, z: 15}
 --- !u!1 &1913773405
 GameObject:
   m_ObjectHideFlags: 0
