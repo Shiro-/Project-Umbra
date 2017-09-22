@@ -1,5 +1,4 @@
-# Project Umbra
-![Cool Pic](Project-Umbra/Images/coolpic.png)
+![PROJECT UMBRA](https://raw.githubusercontent.com/Shiro-/Project-Umbra/master/Images/coolpic.png)
 
 A game where the room is dark. The name (Project Umbra) is temporary and subject to change in the future. More information about the project will be added later on.
 
