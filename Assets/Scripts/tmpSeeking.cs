@@ -14,6 +14,9 @@ public class tmpSeeking : MonoBehaviour
     //public float moveZ;
     //public float max;
 
+    //Subject to change
+    public Vector3 target;
+
     private bool chase;
 
     void Start()
@@ -69,7 +72,15 @@ public class tmpSeeking : MonoBehaviour
     private void Wander()
     {
         //random directions
-        //transform.LookAt(Random);
+        transform.LookAt(RandomTarget(target));
         transform.position += transform.forward * spd * Time.deltaTime;
+    }
+
+    //Similar to the one in gamecontroller
+    private Vector3 RandomTarget(Vector3 temp)
+    {
+        Vector3 newTarget = new Vector3(Random.Range(-temp.x, temp.x), temp.y, Random.Range(-temp.z, temp.z));
+
+        return newTarget;
     }
 }
