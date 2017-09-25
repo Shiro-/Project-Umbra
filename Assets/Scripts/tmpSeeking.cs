@@ -45,11 +45,31 @@ public class tmpSeeking : MonoBehaviour
         //{
         //    //transform.position(Random.RandomRange(), 0.0f, )
         //}
-        if (GameObject.FindWithTag("Player") != null)
-            transform.LookAt(player.transform);
+        //if (GameObject.FindWithTag("Player") != null)
+        //    transform.LookAt(player.transform);
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= min)
+        if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player"))
+        {
             Debug.Log("beeb");
+            transform.LookAt(player.transform);
+            Chase();
+        }
+        else
+        {
+            Wander();
+        }
+    }
 
+    //temp
+    private void Chase()
+    {
+        transform.position += transform.forward * spd * Time.deltaTime;
+    }
+
+    private void Wander()
+    {
+        //random directions
+        //transform.LookAt(Random);
+        transform.position += transform.forward * spd * Time.deltaTime;
     }
 }
