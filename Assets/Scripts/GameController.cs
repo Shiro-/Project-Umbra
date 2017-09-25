@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     //figure how to spawn at different positions
     public Vector3 spawnPosition;
 
+    //public Transform player;
+
     public int initialEnemyCount;
     public int randomEnemyCount;
 
@@ -80,7 +82,7 @@ public class GameController : MonoBehaviour
         //Spawn x enemies in random locations
         for (int i = 0; i < initialEnemyCount; i++)
         {
-            Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition), Quaternion.identity);
 
             check++;
         }
@@ -96,7 +98,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < randomEnemyCount; i++)
         {
             //Random ranges lol good joke
-            Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(Random.Range(-spawnPosition.x, spawnPosition.x), spawnPosition.y, Random.Range(-spawnPosition.z, spawnPosition.z)), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition), Quaternion.identity);
             yield return new WaitForSeconds(spawnTime);
 
             check++;
@@ -113,5 +115,13 @@ public class GameController : MonoBehaviour
         //some other things
         //For later reference:
         //GameObject.FindWithTag("Enemy");
+    }
+
+    Vector3 RandomPosition(Vector3 pos)
+    {
+        //Create a random position
+        Vector3 position = new Vector3(Random.Range(-pos.x, pos.x), pos.y, Random.Range(-pos.z, pos.z));
+
+        return position;
     }
 }
