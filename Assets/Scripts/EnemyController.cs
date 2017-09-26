@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    public float enemySpeed;
+    //public float enemySpeed;
     public float enemyHP;
 
     //This state stuff might be moved to gamecontroller
@@ -30,6 +30,29 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "RevolverBullet" && enemyHP > 0)
+        {
+            enemyHP -= 10;
+            Destroy(other.gameObject);
+            if(enemyHP == 0)
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
+        }
+
+        if(other.tag == "Player" && enemyHP > 0)
+        {
+            //For now if both the enemy and player collide with each other
+            //They get destroyed
+            //Subject to change
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     //Notes on what to do:
