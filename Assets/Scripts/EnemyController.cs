@@ -40,15 +40,6 @@ public class EnemyController : MonoBehaviour
             Destroy(other.gameObject);
             if(enemyHP == 0)
             {
-                //Testing for the implementation of a new weapon type
-                //https://docs.unity3d.com/ScriptReference/Light.html
-                //Instantiate(light object?, position, rotation);
-                GameObject lightGameObject = new GameObject("The Light");
-                Light lightComp = lightGameObject.AddComponent<Light>();
-                lightComp.intensity = 100;
-                lightComp.color = Color.red;
-                lightGameObject.transform.position = gameObject.transform.position;
-
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
