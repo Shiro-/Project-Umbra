@@ -18,10 +18,12 @@ public class tmpSeeking : MonoBehaviour
     public Vector3 target;
 
     private bool chase;
+    private int state;
 
     void Start()
     {
         chase = !chase;
+        state = 0;
     }
 
     void Update()
@@ -55,25 +57,43 @@ public class tmpSeeking : MonoBehaviour
         {
             Debug.Log("beeb");
             transform.LookAt(player.transform);
-            Chase();
+            state = 1;
         }
         else
         {
-            Wander();
+            state = 2;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        switch(state)
+        {
+            case 1:
+                StopAllCoroutines();
+                StartCoroutine(Chase());
+                break;
+            case 2:
+                StopAllCoroutines();
+                StartCoroutine(Wander());
+                break;
         }
     }
 
     //temp
-    private void Chase()
+    IEnumerator Chase()
     {
         transform.position += transform.forward * spd * Time.deltaTime;
+        yield return new WaitForSeconds(0.5f);
     }
 
-    private void Wander()
+    IEnumerator Wander()
     {
         //random directions
         transform.LookAt(RandomTarget(target));
         transform.position += transform.forward * spd * Time.deltaTime;
+
+        yield return new WaitForSeconds(5.0f);
     }
 
     //Similar to the one in gamecontroller
