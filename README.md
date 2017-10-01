@@ -1,7 +1,7 @@
 ![PROJECT UMBRA](https://raw.githubusercontent.com/Shiro-/Project-Umbra/master/Images/coolpic.png)
 
 # Description
-A blackout top-down shooter. The name (Project Umbra) is temporary and subject to change in the future. More information about the project will be added later on.
+A blackout top-down shooter. The name (Project Umbra) is temporary and subject to change in the future.
 * Additional notes to be added soon
 
 # Controls (Subject to change)
