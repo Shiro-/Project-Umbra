@@ -5,9 +5,10 @@ A blackout top-down shooter. The name (Project Umbra) is temporary and subject t
 * Additional notes to be added soon
 
 # Controls (Subject to change)
-* WASD - Movement
-* R - Reload
-* Left Click - Shoot
+* WASD - Move Character
+* R - Reload Weapon
+* F - Toggle Flashlight
+* Left Click - Shoot Gun
 
 # Screenshots
 * To be added soon
