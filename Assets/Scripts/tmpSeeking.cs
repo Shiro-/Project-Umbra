@@ -17,12 +17,12 @@ public class tmpSeeking : MonoBehaviour
     //Subject to change
     public Vector3 target;
 
-    private bool chase;
+    private bool change;
     private int state;
 
     void Start()
     {
-        chase = !chase;
+        change = false;
         state = 0;
     }
 
@@ -58,42 +58,53 @@ public class tmpSeeking : MonoBehaviour
             Debug.Log("beeb");
             transform.LookAt(player.transform);
             state = 1;
+            change = true;
         }
         else
         {
             state = 2;
+            change = true;
         }
     }
 
     void FixedUpdate()
     {
-        switch(state)
+        if (change == true)
         {
-            case 1:
-                StopAllCoroutines();
-                StartCoroutine(Chase());
-                break;
-            case 2:
-                StopAllCoroutines();
-                StartCoroutine(Wander());
-                break;
+            switch (state)
+            {
+                case 1:
+                    StopAllCoroutines();
+                    StartCoroutine(Chase());
+                    break;
+                case 2:
+                    StopAllCoroutines();
+                    StartCoroutine(Wander());
+                    break;
+            }
         }
     }
 
     //temp
     IEnumerator Chase()
     {
-        transform.position += transform.forward * spd * Time.deltaTime;
-        yield return new WaitForSeconds(0.5f);
+        while (true)
+        {
+            transform.position += transform.forward * spd * Time.deltaTime;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     IEnumerator Wander()
     {
-        //random directions
-        transform.LookAt(RandomTarget(target));
-        transform.position += transform.forward * spd * Time.deltaTime;
+        while (true)
+        {
+            //random directions
+            transform.LookAt(RandomTarget(target));
+            transform.position += transform.forward * spd * Time.deltaTime;
 
-        yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(5.0f);
+        }
     }
 
     //Similar to the one in gamecontroller
