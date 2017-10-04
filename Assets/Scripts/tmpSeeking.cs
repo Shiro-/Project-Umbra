@@ -53,18 +53,7 @@ public class tmpSeeking : MonoBehaviour
         //if (GameObject.FindWithTag("Player") != null)
         //    transform.LookAt(player.transform);
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player"))
-        {
-            Debug.Log("beeb");
-            transform.LookAt(player.transform);
-            state = 1;
-            change = true;
-        }
-        else
-        {
-            state = 2;
-            change = true;
-        }
+
     }
 
     void FixedUpdate()
