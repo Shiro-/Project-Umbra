@@ -12,12 +12,16 @@ public class EnemyChaser : MonoBehaviour
     private Vector3 seekTarget;
     private Vector3 chaseDir;
 
+    private LightCheck check;
+
     // Use this for initialization
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindWithTag("Player");
         seekTarget = player.GetComponent<Rigidbody>().position;
+
+        check = GetComponentInParent<LightCheck>();
     }
 	
 	void FixedUpdate ()
@@ -32,6 +36,15 @@ public class EnemyChaser : MonoBehaviour
         chaseDir = Vector3.Normalize(seekTarget - rb.position);
 
         rb.velocity = new Vector3 (chaseDir.x * speed, 0, chaseDir.z * speed);
+
+        if (check.isLit)
+        {
+            rb.velocity += new Vector3(0f, 10.0f, 0f);
+        }
+        else
+        {
+           // rb.MovePosition(new Vector3(rb.position.x, 0.5f, rb.position.z));
+        }
     }
 
     //Bullet collisions

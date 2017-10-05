@@ -11,6 +11,8 @@ TagManager:
   - WispEnemy
   - RevolverBullet
   - tmpTag
+  - GlobalLight
+  - LightCollider
   layers:
   - Default
   - TransparentFX
