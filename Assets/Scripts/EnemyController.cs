@@ -5,22 +5,28 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
+    public GameObject player;
+
     //public float enemySpeed;
     public float enemyHP;
+    public float min;
 
     //This state stuff might be moved to gamecontroller
     //subject to change
-    private bool state;
+    //Temporary
+    private int state;
+    //private bool state;
     private bool chase;
     private bool attack;
     private bool wander;
+    private bool change;
 
-    public enum State
-    {
-        chase,
-        attack,
-        wander
-    }
+    //public enum State
+    //{
+    //    chase,
+    //    attack,
+    //    wander
+    //}
 
     void Start()
     {
@@ -29,18 +35,24 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-      //if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player"))
-      //{
-      //    Debug.Log("beeb");
-      //    transform.LookAt(player.transform);
-      //    state = 1;
-      //    change = true;
-      //}
-      //else
-      //{
-      //    state = 2;
-      //    change = true;
-      //}
+      
+    }
+
+    //Not working properly yet
+    private void CheckStateChange()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player"))
+        {
+            Debug.Log("beeb");
+            transform.LookAt(player.transform);
+            state = 1;
+            change = true;
+        }
+        else
+        {
+            state = 2;
+            change = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
