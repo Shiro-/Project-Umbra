@@ -13,6 +13,7 @@ TagManager:
   - tmpTag
   - GlobalLight
   - LightCollider
+  - Flashlight
   layers:
   - Default
   - TransparentFX

@@ -54,7 +54,7 @@ public class LightCheck : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Check for colliders with this tag (ex. flashlight)
-        if (other.tag == "LightCollider")
+        if (other.tag == "LightCollider" || other.tag == "Flashlight")
         {
             isLit = true;
             collisions++;
@@ -65,7 +65,7 @@ public class LightCheck : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Check for colliders with this tag (ex. flashlight)
-        if (other.tag == "LightCollider")
+        if (other.tag == "LightCollider" || other.tag == "Flashlight")
         {
             collisions--;
         }

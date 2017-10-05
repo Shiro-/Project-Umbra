@@ -9,6 +9,9 @@ public class tmpPlayerController : MonoBehaviour
 
     public Light flashlight;
 
+    private GameObject flashCone;
+    private Collider flashCollider;
+
     public int playerHP;
     public float flashlightBat;
 
@@ -21,6 +24,8 @@ public class tmpPlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        flashCone = GameObject.FindWithTag("Flashlight");
+        flashCollider = flashCone.GetComponent<Collider>();
     }
 
     //Updates every frame
@@ -31,6 +36,7 @@ public class tmpPlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F) && flashlightBat > 0.0f)
         {
             flashlight.enabled = !flashlight.enabled;
+            flashCollider.enabled = !flashCollider.enabled;
         }
 
         if (flashlight.enabled && flashlightBat > 0.0f)
@@ -76,7 +82,7 @@ public class tmpPlayerController : MonoBehaviour
         //For now we will just destroy ourselves and the enemy
         //for future reference we will have hp and other things
         if(other.tag == "WispEnemy" && playerHP > 0)
-        {
+        {    
             //Destroy(other.gameObject);
             //Destroy(gameObject);
             playerHP -= 10;

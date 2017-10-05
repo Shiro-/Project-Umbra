@@ -43,7 +43,8 @@ public class EnemyChaser : MonoBehaviour
         }
         else
         {
-           // rb.MovePosition(new Vector3(rb.position.x, 0.5f, rb.position.z));
+            rb.MovePosition(new Vector3(rb.position.x, 1.0f, rb.position.z));
+            rb.velocity = Vector3.zero;
         }
     }
 
