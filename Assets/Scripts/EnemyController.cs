@@ -14,19 +14,21 @@ public class EnemyController : MonoBehaviour
     //This state stuff might be moved to gamecontroller
     //subject to change
     //Temporary
-    private int state;
-    //private bool state;
+    //private int state;
+    private bool state;
     private bool chase;
     private bool attack;
     private bool wander;
     private bool change;
 
-    //public enum State
-    //{
-    //    chase,
-    //    attack,
-    //    wander
-    //}
+    private State cState;
+
+    public enum State
+    {
+        chase,
+        //attack,
+        wander
+    }
 
     void Start()
     {
@@ -35,7 +37,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-      
+        //We call this badboy
+        CheckStateChange();
     }
 
     //Not working properly yet
@@ -45,13 +48,19 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("beeb");
             transform.LookAt(player.transform);
-            state = 1;
-            change = true;
+            //state = 1;
+            chase = true;
+            wander = false;
+            //change = true;
+            Transition(State.chase);
         }
         else
         {
-            state = 2;
-            change = true;
+            //state = 2;
+            chase = false;
+            wander = true;
+            //change = true;
+            Transition(State.wander);
         }
     }
 
@@ -76,6 +85,12 @@ public class EnemyController : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+    }
+
+    private void Transition(State state)
+    {
+        change = true;
+        cState = state;
     }
 
     //Notes on what to do:

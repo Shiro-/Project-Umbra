@@ -20,6 +20,8 @@ public class tmpSeeking : MonoBehaviour
     private bool change;
     private int state;
 
+    private EnemyController controller;
+
     void Start()
     {
         change = false;
@@ -58,6 +60,9 @@ public class tmpSeeking : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        //Another if statement goes here for when everything gets added
+
         if (change == true)
         {
             switch (state)
