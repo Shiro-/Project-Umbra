@@ -11,7 +11,7 @@ A blackout top-down shooter. The name (Project Umbra) is temporary and subject t
 * Left Click - Shoot Gun
 
 # Screenshots
-* To be added soon
+* Pre-Alpha Version 0.1a
 
 # Team
 * [Noel Eugenio](https://github.com/Shiro-) (Programmer, Artist)
