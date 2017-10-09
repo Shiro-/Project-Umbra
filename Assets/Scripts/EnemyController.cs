@@ -15,13 +15,13 @@ public class EnemyController : MonoBehaviour
     //subject to change
     //Temporary
     //private int state;
-    private bool state;
-    private bool chase;
-    private bool attack;
-    private bool wander;
-    private bool change;
+    //private bool state;
+    public bool chase;
+    public bool attack;
+    public bool wander;
+    public bool change;
 
-    private State cState;
+    public State cState;
 
     public enum State
     {
@@ -32,7 +32,10 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-
+        chase = false;
+        attack = false;
+        wander = false;
+        change = false;
     }
 
     void Update()

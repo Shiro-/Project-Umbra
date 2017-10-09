@@ -20,7 +20,7 @@ public class tmpSeeking : MonoBehaviour
     private bool change;
     private int state;
 
-    private EnemyController controller;
+    private EnemyController eController;
 
     void Start()
     {
@@ -63,15 +63,15 @@ public class tmpSeeking : MonoBehaviour
 
         //Another if statement goes here for when everything gets added
 
-        if (change == true)
+        if (eController.change == true)
         {
-            switch (state)
+            switch (eController.cState)
             {
-                case 1:
+                case EnemyController.State.chase:
                     StopAllCoroutines();
                     StartCoroutine(Chase());
                     break;
-                case 2:
+                case EnemyController.State.wander:
                     StopAllCoroutines();
                     StartCoroutine(Wander());
                     break;
