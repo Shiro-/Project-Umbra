@@ -65,9 +65,9 @@ public class GameController : MonoBehaviour
         //Change scene moved here
         //If you add additional scenes you need to add it to the build settings so we can load it
         //File > Build Settings > Add Scene
-        if(winLight.enabled == true && Input.GetKeyUp(KeyCode.Space))
+        if(winLight.enabled == true /*&& Input.GetKeyUp(KeyCode.Space)*/)
         {
-            SceneManager.LoadScene("DarkScene");
+            SceneManager.LoadScene("Nice");
         }
     }
 

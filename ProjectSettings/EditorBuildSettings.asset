@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: b15f52e52399da54c84880939095254d
+  - enabled: 1
+    path: Assets/Scenes/Nice.unity
+    guid: 7639a3fa0711d1d4ca9ecda4adb1cd30
