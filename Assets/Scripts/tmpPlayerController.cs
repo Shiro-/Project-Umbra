@@ -10,7 +10,8 @@ public class tmpPlayerController : MonoBehaviour
     public Light flashlight;
 
     private GameObject flashCone;
-    private Collider flashCollider;
+    //private Collider flashCollider;
+    private Transform flashT;
 
     public int playerHP;
     public float flashlightBat;
@@ -25,7 +26,10 @@ public class tmpPlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         flashCone = GameObject.FindWithTag("Flashlight");
-        flashCollider = flashCone.GetComponent<Collider>();
+        //flashCollider = flashCone.GetComponent<Collider>();
+        flashT = flashCone.GetComponent<Transform>();
+        //Flashlight is off to start, so we lower it at the beginning
+        flashT.Translate(new Vector3(0f, 0f, -10f));
     }
 
     //Updates every frame
@@ -36,7 +40,18 @@ public class tmpPlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F) && flashlightBat > 0.0f)
         {
             flashlight.enabled = !flashlight.enabled;
-            flashCollider.enabled = !flashCollider.enabled;
+            //flashCollider.enabled = !flashCollider.enabled;
+
+            //Move flashlight collider up and down
+            if (!flashlight.enabled)
+            {
+                flashT.Translate(new Vector3(0f, 0f, -10f));
+            }
+            else
+            {
+                flashT.Translate(new Vector3(0f, 0f, 10f));
+            }
+                
         }
 
         if (flashlight.enabled && flashlightBat > 0.0f)
