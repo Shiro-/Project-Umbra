@@ -14,10 +14,12 @@ A blackout top-down shooter. The name (Project Umbra) is temporary and subject t
 ![Pre-Alpha Version 0.1a](https://raw.githubusercontent.com/Shiro-/Project-Umbra/master/Images/Screenshot001.png)
 * Pre-Alpha Version 0.1a Features
   - Random Enemy Spawner
-  - One Gun Type
+  - Revolver Gun Type
   - Fire and Reload Functions
   - Simple Enemy Movement
   - Player Movement
+  - Lighting Stuff
+  - Scene Switching Stuff
   - Win Condition
 
 # Team
