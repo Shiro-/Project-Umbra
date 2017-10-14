@@ -1,0 +1,10 @@
+Check licenses in each directory to see if attribution is necessary. Even if attribution isn't necessary, try to get the name of the artist if possible and add it to the Thanks list at the bottom.
+
+Sounds from GameSounds.xyz:
+Under Creative Commons Attributions 3.0 license:
+
+GDC Bundle 2016 - No Attribution Required
+
+
+(Alphabetize this)
+Thanks to: James Tubbrit, Sonniss LTD, Tommy Sarioglo
