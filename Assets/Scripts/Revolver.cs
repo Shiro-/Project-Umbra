@@ -20,9 +20,9 @@ public class Revolver : MonoBehaviour
     private float rTime;
     private bool reloading;
 
-    private AudioSource pAudio;
+    public AudioSource pAudio;
 
-    private AudioClip fire;
+    public AudioClip fire;
 
     // Use this for initialization
     void Start()
@@ -35,7 +35,7 @@ public class Revolver : MonoBehaviour
         pAudio = GetComponent<AudioSource>();
 
         //This is returning as null and I'm not sure why - I'm probably dumb
-        fire = Resources.Load<AudioClip>("Sounds/GDC2016/Bullet-Time-14");
+        //fire = Resources.Load<AudioClip>("Sounds/GDC2016/Bullet-Time-14");
     }
 
     // Update is called once per frame
@@ -54,7 +54,8 @@ public class Revolver : MonoBehaviour
                 currentRounds--;
 
                 //pAudio.clip = fire;
-                pAudio.Play();
+                //pAudio.Play();
+                pAudio.PlayOneShot(fire);
 
                 //The Bullet instantiation happens here.
                 GameObject tmpBulletHandler;

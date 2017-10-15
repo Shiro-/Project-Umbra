@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -822,6 +822,8 @@ MonoBehaviour:
   maxRounds: 6
   reloadSpeed: 0.45
   interruptDelay: 0.5
+  pAudio: {fileID: 572684329}
+  fire: {fileID: 8300000, guid: 48192a5f54bed1b4fb50287e70ca4166, type: 3}
 --- !u!82 &572684329
 AudioSource:
   m_ObjectHideFlags: 0
@@ -831,7 +833,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 48192a5f54bed1b4fb50287e70ca4166, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.617
   m_Pitch: 1
@@ -1516,7 +1518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e640c9dacdb4cb4a95df8edc3aae3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 572684321}
   enemyHP: 50
   min: 0
   chase: 0
