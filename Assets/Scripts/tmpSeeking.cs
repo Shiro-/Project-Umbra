@@ -30,7 +30,6 @@ public class tmpSeeking : MonoBehaviour
         //state = 0;
         changeTime = 3.0f;
         ChangeDir();
-        Wander();
     }
 
     void Update()
@@ -83,13 +82,14 @@ public class tmpSeeking : MonoBehaviour
         //    }
         //}
 
+        Wander();
 
         if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player") != null)
         {
             //If the enemy is within the minimum dist from the player
             //Look at the player and start moving towards them
             transform.LookAt(player.transform);
-            //Chase();
+            Chase();
             //chase = !chase;
         }
         else
@@ -98,6 +98,8 @@ public class tmpSeeking : MonoBehaviour
             if(changeTime <= 0)
             {
                 ChangeDir();
+                Wander();
+                changeTime = 3.0f;
             }
         }
     }
