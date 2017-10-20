@@ -31,7 +31,7 @@ public class tmpSeeking : MonoBehaviour
         //change = false;
         //state = 0;
         changeTime = 3.0f;
-        ChangeDir();
+        ChangeDirection();
     }
 
     void Update()
@@ -105,7 +105,7 @@ public class tmpSeeking : MonoBehaviour
             //We also reset our changeTime
             if(changeTime <= 0)
             {
-                ChangeDir();
+                ChangeDirection();
                 Wander();
                 changeTime = 3.0f;
             }
@@ -128,7 +128,7 @@ public class tmpSeeking : MonoBehaviour
         //changeTime = 2.0f;
     }
 
-    private void ChangeDir()
+    private void ChangeDirection()
     {
         transform.LookAt(RandomTarget(target));
     }
