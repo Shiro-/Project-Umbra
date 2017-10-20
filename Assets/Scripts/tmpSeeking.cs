@@ -17,15 +17,15 @@ public class tmpSeeking : MonoBehaviour
     //Subject to change
     public Vector3 target;
 
-    private bool change;
-    private int state;
+    //private bool change;
+    //private int state;
 
     private EnemyController eController;
 
     void Start()
     {
-        change = false;
-        state = 0;
+        //change = false;
+        //state = 0;
     }
 
     void Update()
@@ -63,20 +63,20 @@ public class tmpSeeking : MonoBehaviour
 
         //Another if statement goes here for when everything gets added
 
-        if (eController.change == true)
-        {
-            switch (eController.cState)
-            {
-                case EnemyController.State.chase:
-                    StopAllCoroutines();
-                    StartCoroutine(Chase());
-                    break;
-                case EnemyController.State.wander:
-                    StopAllCoroutines();
-                    StartCoroutine(Wander());
-                    break;
-            }
-        }
+        //if (eController.change == true)
+        //{
+        //    switch (eController.cState)
+        //    {
+        //        case EnemyController.State.chase:
+        //            StopAllCoroutines();
+        //            StartCoroutine(Chase());
+        //            break;
+        //        case EnemyController.State.wander:
+        //            StopAllCoroutines();
+        //            StartCoroutine(Wander());
+        //            break;
+        //    }
+        //}
     }
 
     //temp

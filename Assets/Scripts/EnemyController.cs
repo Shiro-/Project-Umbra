@@ -16,55 +16,55 @@ public class EnemyController : MonoBehaviour
     //Temporary
     //private int state;
     //private bool state;
-    public bool chase;
-    public bool attack;
-    public bool wander;
-    public bool change;
+    //public bool chase;
+    //public bool attack;
+    //public bool wander;
+    //public bool change;
 
-    public State cState;
+    //public State cState;
 
-    public enum State
-    {
-        chase,
-        //attack,
-        wander
-    }
+    //public enum State
+    //{
+    //    chase,
+    //    //attack,
+    //    wander
+    //}
 
     void Start()
     {
-        chase = false;
-        attack = false;
-        wander = false;
-        change = false;
+        //chase = false;
+        //attack = false;
+        //wander = false;
+        //change = false;
     }
 
     void Update()
     {
         //We call this badboy
-        CheckStateChange();
+        //CheckStateChange();
     }
 
     //Not working properly yet
     private void CheckStateChange()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player"))
-        {
-            Debug.Log("beeb");
-            transform.LookAt(player.transform);
-            //state = 1;
-            chase = true;
-            wander = false;
-            //change = true;
-            Transition(State.chase);
-        }
-        else
-        {
-            //state = 2;
-            chase = false;
-            wander = true;
-            //change = true;
-            Transition(State.wander);
-        }
+        //if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player"))
+        //{
+        //    Debug.Log("beeb");
+        //    transform.LookAt(player.transform);
+        //    //state = 1;
+        //    chase = true;
+        //    wander = false;
+        //    //change = true;
+        //    Transition(State.chase);
+        //}
+        //else
+        //{
+        //    //state = 2;
+        //    chase = false;
+        //    wander = true;
+        //    //change = true;
+        //    Transition(State.wander);
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,11 +90,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Transition(State state)
-    {
-        change = true;
-        cState = state;
-    }
+    //private void Transition(State state)
+    //{
+    //    change = true;
+    //    cState = state;
+    //}
 
     //Notes on what to do:
     /*
