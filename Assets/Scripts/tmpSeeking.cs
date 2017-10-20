@@ -20,12 +20,17 @@ public class tmpSeeking : MonoBehaviour
     //private bool change;
     //private int state;
 
+    private float changeTime;
+
     private EnemyController eController;
 
     void Start()
     {
         //change = false;
         //state = 0;
+        changeTime = 3.0f;
+        ChangeDir();
+        Wander();
     }
 
     void Update()
@@ -77,28 +82,45 @@ public class tmpSeeking : MonoBehaviour
         //            break;
         //    }
         //}
+
+
+        if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player") != null)
+        {
+            //If the enemy is within the minimum dist from the player
+            //Look at the player and start moving towards them
+            transform.LookAt(player.transform);
+            //Chase();
+            //chase = !chase;
+        }
+        else
+        {
+            changeTime -= Time.deltaTime;
+            if(changeTime <= 0)
+            {
+                ChangeDir();
+            }
+        }
     }
 
     //temp
-    IEnumerator Chase()
+    private void Chase()
     {
-        while (true)
-        {
-            transform.position += transform.forward * spd * Time.deltaTime;
-            yield return new WaitForSeconds(0.5f);
-        }
+
+        transform.position += transform.forward * spd * Time.deltaTime;
+
     }
 
-    IEnumerator Wander()
+    private void Wander()
     {
-        while (true)
-        {
-            //random directions
-            transform.LookAt(RandomTarget(target));
-            transform.position += transform.forward * spd * Time.deltaTime;
 
-            yield return new WaitForSeconds(5.0f);
-        }
+        //random directions
+        transform.position += transform.forward * spd * Time.deltaTime;
+        //changeTime = 2.0f;
+    }
+
+    private void ChangeDir()
+    {
+        transform.LookAt(RandomTarget(target));
     }
 
     //Similar to the one in gamecontroller
