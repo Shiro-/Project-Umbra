@@ -20,6 +20,8 @@ public class tmpSeeking : MonoBehaviour
     //private bool change;
     //private int state;
 
+    //This value controls how long the enemy will wander in one direction
+    //Subject to change if needed
     private float changeTime;
 
     private EnemyController eController;
@@ -82,6 +84,7 @@ public class tmpSeeking : MonoBehaviour
         //    }
         //}
 
+        //We want the enemy to start wandering at the beginning
         Wander();
 
         if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player") != null)
@@ -94,7 +97,12 @@ public class tmpSeeking : MonoBehaviour
         }
         else
         {
+            //Timer for how long the enemy should wander in  one direction
             changeTime -= Time.deltaTime;
+
+            //When the time reaches zero we choose a new radom target and
+            //wander in that direction
+            //We also reset our changeTime
             if(changeTime <= 0)
             {
                 ChangeDir();
