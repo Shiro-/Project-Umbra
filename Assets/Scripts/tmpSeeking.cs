@@ -22,7 +22,8 @@ public class tmpSeeking : MonoBehaviour
 
     //This value controls how long the enemy will wander in one direction
     //Subject to change if needed
-    private float changeTime;
+    public float wanderTime;
+    private float _wanderTime;
 
     private EnemyController eController;
 
@@ -30,7 +31,7 @@ public class tmpSeeking : MonoBehaviour
     {
         //change = false;
         //state = 0;
-        changeTime = 3.0f;
+        _wanderTime = wanderTime;
         ChangeDirection();
     }
 
@@ -98,16 +99,16 @@ public class tmpSeeking : MonoBehaviour
         else
         {
             //Timer for how long the enemy should wander in  one direction
-            changeTime -= Time.deltaTime;
+            _wanderTime -= Time.deltaTime;
 
             //When the time reaches zero we choose a new radom target and
             //wander in that direction
             //We also reset our changeTime
-            if(changeTime <= 0)
+            if(_wanderTime <= 0)
             {
                 ChangeDirection();
                 Wander();
-                changeTime = 3.0f;
+                _wanderTime = wanderTime;
             }
         }
     }

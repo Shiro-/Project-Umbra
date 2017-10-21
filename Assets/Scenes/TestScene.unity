@@ -1499,9 +1499,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 572684321}
-  spd: 5
+  spd: 3
   min: 10
   target: {x: 15, y: 1, z: 15}
+  wanderTime: 2
 --- !u!4 &1582481756 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4485664140372416, guid: 8f8a12bb817205b409f95b940ace758f,
