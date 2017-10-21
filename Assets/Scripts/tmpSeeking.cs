@@ -16,6 +16,7 @@ public class tmpSeeking : MonoBehaviour
 
     //Subject to change
     public Vector3 target;
+    public Vector3[] patrolTargets;
 
     //private bool change;
     //private int state;
@@ -127,6 +128,34 @@ public class tmpSeeking : MonoBehaviour
         //random directions
         transform.position += transform.forward * spd * Time.deltaTime;
         //changeTime = 2.0f;
+    }
+
+    private void Patrol()
+    {
+        //Just testing
+        //This could be done using a navmesh as well, I think
+
+        /*
+         * We give unity a set of points on the field
+         * Because it is an array of vector3, we can go through it using a loop
+         * (patrolTarget)
+         * 
+         * How it would work:
+         * It loops to the first point,
+         * The enemy then faces that direction and moves towards it
+         * Once the enemy has reached the point, we loop to the second point and move towards that
+         * 
+         * Once the enemy has looped through all the points, we go back to the beginning of the loop
+         * and start over again
+         * 
+         * This will probably use the wanderTime variable too
+         * 
+         */
+
+        //When will we ever use this function if we have wander?
+        //I was thinking the enemy initially wanders and once it detects the player the enemy will chase them
+        //But since the player is faster then the enemy(for now) if we go outside the min distance of the enemy,
+        //It will go into patrol instead of wander
     }
 
     private void ChangeDirection()
