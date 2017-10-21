@@ -31,7 +31,7 @@ public class tmpSeeking : MonoBehaviour
     {
         //change = false;
         //state = 0;
-        _wanderTime = wanderTime;
+        _wanderTime = Random.Range(0.1f, wanderTime);
         ChangeDirection();
     }
 
@@ -108,7 +108,7 @@ public class tmpSeeking : MonoBehaviour
             {
                 ChangeDirection();
                 Wander();
-                _wanderTime = wanderTime;
+                _wanderTime = Random.Range(0.1f, wanderTime);
             }
         }
     }
