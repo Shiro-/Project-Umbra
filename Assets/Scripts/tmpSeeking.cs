@@ -24,7 +24,11 @@ public class tmpSeeking : MonoBehaviour
     //This value controls how long the enemy will wander in one direction
     //Subject to change if needed
     public float wanderTime;
+
     private float _wanderTime;
+    private bool isWandering;
+    private bool isChasing;
+    private bool isPatroling;
 
     private EnemyController eController;
 
@@ -32,6 +36,10 @@ public class tmpSeeking : MonoBehaviour
     {
         //change = false;
         //state = 0;
+        isWandering = false;
+        isChasing = false;
+        isPatroling = false;
+
         _wanderTime = Random.Range(0.1f, wanderTime);
         ChangeDirection();
     }
@@ -87,15 +95,21 @@ public class tmpSeeking : MonoBehaviour
         //}
 
         //We want the enemy to start wandering at the beginning
-        Wander();
+        if(isChasing == false && isPatroling == false)
+        {
+            Wander();
+            isWandering = true;
+        }
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player") != null)
+        if (Vector3.Distance(transform.position, player.transform.position) <= min && GameObject.FindWithTag("Player") != null && isWandering == true)
         {
             //If the enemy is within the minimum dist from the player
             //Look at the player and start moving towards them
             transform.LookAt(player.transform);
             Chase();
-            //chase = !chase;
+            isWandering = false;
+            isChasing = true;
+            isPatroling = false;
         }
         else
         {
@@ -108,9 +122,13 @@ public class tmpSeeking : MonoBehaviour
             if(_wanderTime <= 0)
             {
                 ChangeDirection();
-                Wander();
+                //Wander();
                 _wanderTime = Random.Range(0.1f, wanderTime);
             }
+
+            isWandering = true;
+            isChasing = false;
+            isPatroling = false;
         }
     }
 
@@ -139,17 +157,17 @@ public class tmpSeeking : MonoBehaviour
          * We give unity a set of points on the field
          * Because it is an array of vector3, we can go through it using a loop
          * (patrolTarget)
-         * 
+         *
          * How it would work:
          * It loops to the first point,
          * The enemy then faces that direction and moves towards it
          * Once the enemy has reached the point, we loop to the second point and move towards that
-         * 
+         *
          * Once the enemy has looped through all the points, we go back to the beginning of the loop
          * and start over again
-         * 
+         *
          * This will probably use the wanderTime variable too
-         * 
+         *
          */
 
         //When will we ever use this function if we have wander?
