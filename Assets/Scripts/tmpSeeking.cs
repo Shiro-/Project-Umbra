@@ -174,6 +174,19 @@ public class tmpSeeking : MonoBehaviour
         //I was thinking the enemy initially wanders and once it detects the player the enemy will chase them
         //But since the player is faster then the enemy(for now) if we go outside the min distance of the enemy,
         //It will go into patrol instead of wander
+
+        if(patrolTargets.Length == 0)
+        {
+            Debug.Log("empty");
+        }
+        else
+        {
+            for(int i = 0; i < patrolTargets.Length; i++)
+            {
+                //Do something
+            }
+        }
+
     }
 
     private void ChangeDirection()
