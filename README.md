@@ -20,6 +20,7 @@ A blackout top-down shooter. The name (Project Umbra) is temporary and subject t
   - Player Movement
   - Lighting Stuff
   - Scene Switching Stuff
+  - Simple Enemy AI
   - Win Condition
 
 # Team
