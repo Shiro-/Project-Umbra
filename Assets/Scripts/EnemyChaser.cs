@@ -6,6 +6,9 @@ public class EnemyChaser : MonoBehaviour
 {
     public int health;
     public float speed;
+    public float dmgMod = 1.0f;
+
+    public float actDelay = 0.5f;
 
     private Rigidbody rb;
     private GameObject player;
@@ -37,14 +40,16 @@ public class EnemyChaser : MonoBehaviour
 
         rb.velocity = new Vector3 (chaseDir.x * speed, 0, chaseDir.z * speed);
 
+        //Turns to stone when lit
         if (check.isLit)
         {
-            rb.velocity += new Vector3(0f, 10.0f, 0f);
+            rb.velocity = Vector3.zero;
+            dmgMod = 0.1f;
+            //rb.velocity += new Vector3(0f, 10.0f, 0f);
         }
         else
         {
-            rb.MovePosition(new Vector3(rb.position.x, 1.0f, rb.position.z));
-            rb.velocity = Vector3.zero;
+            dmgMod = 1.0f;
         }
     }
 
@@ -55,7 +60,8 @@ public class EnemyChaser : MonoBehaviour
         {
             //Should look like this later probably
             //health - other.damage 
-            health -= 10;
+
+            health -= Mathf.RoundToInt(10 * dmgMod);
             Destroy(other.gameObject);
         }
     }
