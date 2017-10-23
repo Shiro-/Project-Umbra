@@ -17,6 +17,8 @@ public class EnemyChaser : MonoBehaviour
 
     private LightCheck check;
 
+    private float lastLit;
+
     // Use this for initialization
     void Start ()
     {
@@ -38,13 +40,19 @@ public class EnemyChaser : MonoBehaviour
         seekTarget = player.GetComponent<Rigidbody>().position;
         chaseDir = Vector3.Normalize(seekTarget - rb.position);
 
-        rb.velocity = new Vector3 (chaseDir.x * speed, 0, chaseDir.z * speed);
+        if ((Time.time - lastLit > actDelay))
+        {
+            rb.velocity = new Vector3(chaseDir.x * speed, 0, chaseDir.z * speed);
+        }
+        
 
         //Turns to stone when lit
         if (check.isLit)
         {
             rb.velocity = Vector3.zero;
             dmgMod = 0.1f;
+
+            lastLit = Time.time;
             //rb.velocity += new Vector3(0f, 10.0f, 0f);
         }
         else
