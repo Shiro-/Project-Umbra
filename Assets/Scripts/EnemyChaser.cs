@@ -40,20 +40,22 @@ public class EnemyChaser : MonoBehaviour
         seekTarget = player.GetComponent<Rigidbody>().position;
         chaseDir = Vector3.Normalize(seekTarget - rb.position);
 
+        //Enemy moves after it has been in darkness for some time
         if ((Time.time - lastLit > actDelay))
         {
+            //Move straight towards the player (for now)
             rb.velocity = new Vector3(chaseDir.x * speed, 0, chaseDir.z * speed);
         }
         
 
-        //Turns to stone when lit
+        //Turns to stone when illuminated
         if (check.isLit)
         {
+            //Immobile, and takes much less damage for the duration
             rb.velocity = Vector3.zero;
             dmgMod = 0.1f;
 
             lastLit = Time.time;
-            //rb.velocity += new Vector3(0f, 10.0f, 0f);
         }
         else
         {
