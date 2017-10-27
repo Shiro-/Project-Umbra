@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyChaser : MonoBehaviour
 {
-    public int health;
     public float speed;
     public float dmgMod = 1.0f;
 
@@ -31,11 +30,6 @@ public class EnemyChaser : MonoBehaviour
 	
 	void FixedUpdate ()
     {
-		if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-
         //Set player as target and get direction vector
         seekTarget = player.GetComponent<Rigidbody>().position;
         chaseDir = Vector3.Normalize(seekTarget - rb.position);
@@ -60,19 +54,6 @@ public class EnemyChaser : MonoBehaviour
         else
         {
             dmgMod = 1.0f;
-        }
-    }
-
-    //Bullet collisions
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Bullet")
-        {
-            //Should look like this later probably
-            //health - other.damage 
-
-            health -= Mathf.RoundToInt(10 * dmgMod);
-            Destroy(other.gameObject);
         }
     }
 }
