@@ -1,20 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class tmpPlayerController : MonoBehaviour
 {
     //We need rigidbody for movement
     private Rigidbody rb;
 
-    public Light flashlight;
-
     private GameObject flashCone;
     //private Collider flashCollider;
     private Transform flashT;
 
+    public Light flashlight;
+
     public int playerHP;
     public float flashlightBat;
+
+    public Text playerHPText;
 
     //https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html
     void Awake()
@@ -35,6 +38,9 @@ public class tmpPlayerController : MonoBehaviour
     //Updates every frame
     void Update()
     {
+
+        SetHPText();
+
         //https://docs.unity3d.com/ScriptReference/Input.GetKeyUp.html
         //This looks so bad and there is probably a better way to do this
         if (Input.GetKeyUp(KeyCode.F) && flashlightBat > 0.0f)
@@ -110,5 +116,15 @@ public class tmpPlayerController : MonoBehaviour
         }
         //Changed tags to prepare for different enemies
         //and also hp values for the player
+    }
+
+    void SetHPText()
+    {
+        playerHPText.text = "Player HP: " + playerHP.ToString();
+
+        if(playerHP == 0 && GameObject.FindWithTag("Player") == null)
+        {
+            playerHPText.text = "Dead ";
+        }
     }
 }
