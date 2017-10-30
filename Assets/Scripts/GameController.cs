@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class GameController : MonoBehaviour
 
     public float waitTime;
     public float spawnTime;
+
+    public Text enemyCountText;
 
     //change this later
     private int check;
@@ -46,6 +49,8 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+
+        SetEnemyCountText();
 
         //There is probably a better way to do this
         if (check == totalEnemyCount && GameObject.FindWithTag("WispEnemy") == null)
@@ -123,5 +128,10 @@ public class GameController : MonoBehaviour
         Vector3 position = new Vector3(Random.Range(-pos.x, pos.x), pos.y, Random.Range(-pos.z, pos.z));
 
         return position;
+    }
+
+    void SetEnemyCountText()
+    {
+        enemyCountText.text = "Enemy: " + totalEnemyCount.ToString();
     }
 }

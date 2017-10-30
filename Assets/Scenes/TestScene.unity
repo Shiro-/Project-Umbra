@@ -175,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enemies
+  m_Text: Enemy
 --- !u!222 &80593226
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1314,6 +1314,7 @@ MonoBehaviour:
   randomEnemyCount: 2
   waitTime: 5
   spawnTime: 10
+  enemyCountText: {fileID: 80593225}
 --- !u!1 &2091633474
 GameObject:
   m_ObjectHideFlags: 0
