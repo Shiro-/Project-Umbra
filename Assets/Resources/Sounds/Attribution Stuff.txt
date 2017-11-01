@@ -3,8 +3,9 @@ Check licenses in each directory to see if attribution is necessary. Even if att
 Sounds from GameSounds.xyz:
 Under Creative Commons Attributions 3.0 license:
 
+GDC Bundle 2015 - No Attribution Required
 GDC Bundle 2016 - No Attribution Required
 
 
 (Alphabetize this)
-Thanks to: James Tubbrit, Sonniss LTD, Tommy Sarioglo
+Thanks to: Coll Anderson, James Tubbrit, Sonniss LTD, Tommy Sarioglo

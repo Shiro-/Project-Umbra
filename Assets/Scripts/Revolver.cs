@@ -22,7 +22,8 @@ public class Revolver : MonoBehaviour
 
     public AudioSource pAudio;
 
-    public AudioClip fire;
+    private AudioClip fire;
+    private AudioClip reload;
 
     // Use this for initialization
     void Start()
@@ -34,8 +35,9 @@ public class Revolver : MonoBehaviour
 
         pAudio = GetComponent<AudioSource>();
 
-        //Revolver sounds needed: reload
+        //Revolver sounds needed: maybe reload end/interrupt 
         fire = Resources.Load<AudioClip>("Sounds/GDC2016/Bullet-Time-14");
+        reload = Resources.Load<AudioClip>("Sounds/GDC2016/revolver_load_1");
     }
 
     // Update is called once per frame
@@ -93,6 +95,8 @@ public class Revolver : MonoBehaviour
         {
             if (Time.time - rTime > reloadSpeed)
             {
+                pAudio.PlayOneShot(reload);
+
                 currentRounds++;
                 rTime = Time.time;
             }
