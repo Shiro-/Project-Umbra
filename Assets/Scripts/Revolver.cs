@@ -34,7 +34,7 @@ public class Revolver : MonoBehaviour
 
         pAudio = GetComponent<AudioSource>();
 
-        //This is returning as null and I'm not sure why - I'm probably dumb
+        //Revolver sounds needed: reload
         fire = Resources.Load<AudioClip>("Sounds/GDC2016/Bullet-Time-14");
     }
 
