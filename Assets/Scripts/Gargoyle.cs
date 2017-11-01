@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChaser : MonoBehaviour
+public class Gargoyle : MonoBehaviour
 {
     public float speed;
     public float dmgMod = 1.0f;
