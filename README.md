@@ -23,6 +23,9 @@ A blackout top-down shooter. The name (Project Umbra) is temporary and subject t
   - Simple Enemy AI
   - Win Condition
   - Weapon Sounds
+  
+ * Pre-Alpha Version 0.2a Features
+  - Screenshots and features Coming soon
 
 # Team
 * [Noel Eugenio](https://github.com/Shiro-) (Programmer, Artist)
