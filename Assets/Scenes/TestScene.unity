@@ -550,6 +550,11 @@ Prefab:
       propertyPath: playerHPText
       value: 
       objectReference: {fileID: 331581255}
+    - target: {fileID: 114725595415375040, guid: 3d251ce360acf104aae255bf5315b131,
+        type: 2}
+      propertyPath: audioLevel
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d251ce360acf104aae255bf5315b131, type: 2}
   m_IsPrefabParent: 0

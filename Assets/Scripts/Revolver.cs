@@ -22,6 +22,9 @@ public class Revolver : MonoBehaviour
 
     public AudioSource pAudio;
 
+    [Range(0.0f, 1.0f)]
+    public float audioLevel;
+
     private AudioClip fire;
     private AudioClip reload;
 
@@ -57,7 +60,7 @@ public class Revolver : MonoBehaviour
 
                 pAudio.clip = fire;
                 //pAudio.Play();
-                pAudio.PlayOneShot(fire);
+                pAudio.PlayOneShot(fire, audioLevel);
 
                 //The Bullet instantiation happens here.
                 GameObject tmpBulletHandler;
@@ -95,7 +98,7 @@ public class Revolver : MonoBehaviour
         {
             if (Time.time - rTime > reloadSpeed)
             {
-                pAudio.PlayOneShot(reload);
+                pAudio.PlayOneShot(reload, audioLevel);
 
                 currentRounds++;
                 rTime = Time.time;
