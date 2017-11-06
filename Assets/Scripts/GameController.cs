@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
 
     //figure how to spawn at different positions
     //public Vector3 spawnPosition;
-    public GameObject spawnPosition;
+    public GameObject[] spawnPosition;
 
     //Handling multiple spawn positions:
     //public GameObject[] spawnPosition;
@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
         //Spawn x enemies in random locations
         for (int i = 0; i < initialEnemyCount; i++)
         {
-            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition.transform.position), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition), Quaternion.identity);
 
             check++;
         }
@@ -107,7 +107,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < randomEnemyCount; i++)
         {
             //Random ranges lol good joke
-            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition.transform.position), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition), Quaternion.identity);
             yield return new WaitForSeconds(spawnTime);
 
             check++;
@@ -127,7 +127,7 @@ public class GameController : MonoBehaviour
     //We will pass in an array of gameobjects
 
     //This function will change to accept the array of gameobjects instead of one position
-    Vector3 RandomPosition(Vector3 pos)
+    Vector3 RandomPosition(GameObject[] pos)
     {
         //In here we will check the size of the array
         //Then once we know how big the array is, we get the position of each spawn point
@@ -135,13 +135,39 @@ public class GameController : MonoBehaviour
 
         //In the future, instead of choosing random positions, we will have different spawnpoints in the
         //level.
-        
+
         //Within the editor, I've already made a prefab of a gameobject that contains the spawnpositions
 
         //Create a random position
-        Vector3 position = new Vector3(Random.Range(-pos.x, pos.x), pos.y, Random.Range(-pos.z, pos.z));
+        //Vector3 position = new Vector3(Random.Range(-pos.x, pos.x), pos.y, Random.Range(-pos.z, pos.z));
 
-        return position;
+        int conSize = pos.Length;
+        Vector3[] newPositions = new Vector3[conSize];
+        Vector3[] finalPosition = new Vector3[2];
+
+        for(int i = 0; i < pos.Length; i++)
+        {
+            newPositions[i] = new Vector3(Random.Range(-pos[i].transform.position.x, pos[i].transform.position.x), pos[i].transform.position.y, Random.Range(-pos[i].transform.position.z, pos[i].transform.position.z));
+        }
+
+        switch(Random.Range(1, 2))
+        {
+            case 1:
+                //The new random position
+                finalPosition[0] = newPositions[Random.Range(0, conSize)];
+                break;
+                //return newPositions[Random.Range(0, conSize)];
+                //break;
+            case 2:
+                //The base position, meaning the original position of the spawnposition
+                finalPosition[1] = pos[Random.Range(0, conSize)].transform.position;
+                break;
+                //return pos[Random.Range(0, conSize)].transform.position;
+                //break;
+        }
+
+        //Choose between the random position or the base position
+        return finalPosition[Random.Range(0, 1)];
     }
 
     void SetEnemyCountText()
