@@ -13,7 +13,8 @@ public class GameController : MonoBehaviour
     //public Light[] Lights;
 
     //figure how to spawn at different positions
-    public Vector3 spawnPosition;
+    //public Vector3 spawnPosition;
+    public GameObject spawnPosition;
 
     //public Transform player;
 
@@ -87,7 +88,7 @@ public class GameController : MonoBehaviour
         //Spawn x enemies in random locations
         for (int i = 0; i < initialEnemyCount; i++)
         {
-            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition.transform.position), Quaternion.identity);
 
             check++;
         }
@@ -103,7 +104,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < randomEnemyCount; i++)
         {
             //Random ranges lol good joke
-            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], RandomPosition(spawnPosition.transform.position), Quaternion.identity);
             yield return new WaitForSeconds(spawnTime);
 
             check++;
