@@ -16,6 +16,9 @@ public class GameController : MonoBehaviour
     //public Vector3 spawnPosition;
     public GameObject spawnPosition;
 
+    //Handling multiple spawn positions:
+    //public GameObject[] spawnPosition;
+
     //public Transform player;
 
     public int initialEnemyCount;
@@ -116,15 +119,25 @@ public class GameController : MonoBehaviour
         //for now though we can leave it like this for testing purposes
 
         //To add:
-        //Scoring
-        //player hp and enemy hp
-        //some other things
         //For later reference:
         //GameObject.FindWithTag("Enemy");
     }
 
+    //In the two coroutines above, instead of passing in one position from the gameobject for spawning,
+    //We will pass in an array of gameobjects
+
+    //This function will change to accept the array of gameobjects instead of one position
     Vector3 RandomPosition(Vector3 pos)
     {
+        //In here we will check the size of the array
+        //Then once we know how big the array is, we get the position of each spawn point
+        //Then we choose a /Random/ position for now
+
+        //In the future, instead of choosing random positions, we will have different spawnpoints in the
+        //level.
+        
+        //Within the editor, I've already made a prefab of a gameobject that contains the spawnpositions
+
         //Create a random position
         Vector3 position = new Vector3(Random.Range(-pos.x, pos.x), pos.y, Random.Range(-pos.z, pos.z));
 
