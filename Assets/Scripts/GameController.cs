@@ -154,13 +154,13 @@ public class GameController : MonoBehaviour
         {
             case 1:
                 //The new random position
-                finalPosition[0] = newPositions[Random.Range(0, conSize)];
+                finalPosition[0] = newPositions[Random.Range(0, (conSize - 1))];
                 break;
                 //return newPositions[Random.Range(0, conSize)];
                 //break;
             case 2:
                 //The base position, meaning the original position of the spawnposition
-                finalPosition[1] = pos[Random.Range(0, conSize)].transform.position;
+                finalPosition[1] = pos[Random.Range(0, (conSize - 1))].transform.position;
                 break;
                 //return pos[Random.Range(0, conSize)].transform.position;
                 //break;
