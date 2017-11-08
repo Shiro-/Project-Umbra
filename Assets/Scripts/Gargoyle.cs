@@ -5,7 +5,6 @@ using UnityEngine;
 public class Gargoyle : MonoBehaviour
 {
     public float speed;
-    public float dmgMod = 1.0f;
 
     public float actDelay = 0.5f;
 
@@ -15,6 +14,7 @@ public class Gargoyle : MonoBehaviour
     private Vector3 chaseDir;
 
     private LightCheck check;
+    private EnemyController controller;
 
     private float lastLit;
 
@@ -26,6 +26,7 @@ public class Gargoyle : MonoBehaviour
         seekTarget = player.GetComponent<Rigidbody>().position;
 
         check = GetComponentInParent<LightCheck>();
+        controller = GetComponentInParent<EnemyController>();
     }
 	
 	void FixedUpdate ()
@@ -47,13 +48,13 @@ public class Gargoyle : MonoBehaviour
         {
             //Immobile, and takes much less damage for the duration
             rb.velocity = Vector3.zero;
-            dmgMod = 0.1f;
+            controller.dmgMod = 0.1f;
 
             lastLit = Time.time;
         }
         else
         {
-            dmgMod = 1.0f;
+            controller.dmgMod = 1.0f;
         }
     }
 }

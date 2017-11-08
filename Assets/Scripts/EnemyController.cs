@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
 
     //public float enemySpeed;
     public float enemyHP;
+    public float dmgMod = 1.0f; //Damage multiplier to allow for some interesting enemy behaviours
+
     public float min;
 
     //This state stuff might be moved to gamecontroller
@@ -71,7 +73,7 @@ public class EnemyController : MonoBehaviour
     {
         if(other.tag == "RevolverBullet" && enemyHP > 0)
         {
-            enemyHP -= 10;
+            enemyHP -= (10 * dmgMod);
             Destroy(other.gameObject);
             if(enemyHP == 0)
             {

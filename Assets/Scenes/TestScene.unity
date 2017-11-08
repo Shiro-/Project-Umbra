@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1160,8 +1160,9 @@ GameObject:
   - component: {fileID: 1540992633}
   - component: {fileID: 1540992632}
   - component: {fileID: 1540992638}
+  - component: {fileID: 1540992639}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Gargoyle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1178,8 +1179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0820a8a7c5d147d4c9ce5ed96940d8d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  dmgMod: 1
+  speed: 2
   actDelay: 0.5
 --- !u!114 &1540992633
 MonoBehaviour:
@@ -1232,7 +1232,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540992631}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1272,6 +1272,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1540992639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540992631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e640c9dacdb4cb4a95df8edc3aae3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemyHP: 10
+  dmgMod: 1
+  min: 0
 --- !u!1 &1619284758
 GameObject:
   m_ObjectHideFlags: 0
