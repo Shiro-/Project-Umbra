@@ -35,6 +35,14 @@ public class GameController : MonoBehaviour
 
     private bool win;
 
+    public enum SpawningStyle
+    {
+        RANDOM,
+        ORIGINAL
+    };
+
+    public SpawningStyle style;
+
     void Awake()
     {
         winLight.enabled = !winLight.enabled;
@@ -47,8 +55,18 @@ public class GameController : MonoBehaviour
         win = !win;
         totalEnemyCount = initialEnemyCount + randomEnemyCount;
         //https://docs.unity3d.com/Manual/Coroutines.html
-        StartCoroutine(InitialEnemySpawn());
-        StartCoroutine(RandomEnemySpawn());
+        switch(style)
+        {
+            case style.RANDOM:
+                StartCoroutine(InitialRandomEnemySpawn());
+                StartCoroutine(RandomEnemySpawn());
+                break;
+            case style.ORIGINAL:
+                StartCoroutine(InitialOriginalEnemySpawn());
+                StartCoroutine(OriginalEnemySpawn());
+                break;
+        }
+        
     }
 
     void Update()
@@ -82,7 +100,7 @@ public class GameController : MonoBehaviour
 
     //Initially, we want to spawn x amount of enemies before we randomly spawn them
     //Subject to change in the future
-    IEnumerator InitialEnemySpawn()
+    IEnumerator InitialRandomEnemySpawn()
     {
         //We want this to run before the RandomEnemySpawn
         //There is probably a better solution but this will do for now
@@ -123,6 +141,39 @@ public class GameController : MonoBehaviour
         //GameObject.FindWithTag("Enemy");
     }
 
+    IEnumerator InitialOriginalEnemySpawn()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        //Spawn x enemies in random locations
+        for (int i = 0; i < initialEnemyCount; i++)
+        {
+            Instantiate(enemies[Random.Range(0, enemies.Length)], OriginalPosition(spawnPosition), Quaternion.identity);
+
+            check++;
+        }
+
+        yield break;
+    }
+
+    //https://docs.unity3d.com/Manual/InstantiatingPrefabs.html
+    IEnumerator OriginalEnemySpawn()
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        for (int i = 0; i < randomEnemyCount; i++)
+        {
+            //Random ranges lol good joke
+            Instantiate(enemies[Random.Range(0, enemies.Length)], OriginalPosition(spawnPosition), Quaternion.identity);
+            yield return new WaitForSeconds(spawnTime);
+
+            check++;
+            //print(check);
+        }
+
+        yield break;
+    }
+
     //In the two coroutines above, instead of passing in one position from the gameobject for spawning,
     //We will pass in an array of gameobjects
 
@@ -141,33 +192,40 @@ public class GameController : MonoBehaviour
         //Create a random position
         //Vector3 position = new Vector3(Random.Range(-pos.x, pos.x), pos.y, Random.Range(-pos.z, pos.z));
 
-        int conSize = pos.Length;
-        Vector3[] newPositions = new Vector3[conSize];
-        Vector3[] finalPosition = new Vector3[2];
+        //int conSize = pos.Length;
+        Vector3[] newPositions = new Vector3[pos.Length];
+        //Vector3[] finalPosition = new Vector3[2];
 
         for(int i = 0; i < pos.Length; i++)
         {
             newPositions[i] = new Vector3(Random.Range(-pos[i].transform.position.x, pos[i].transform.position.x), pos[i].transform.position.y, Random.Range(-pos[i].transform.position.z, pos[i].transform.position.z));
         }
 
-        switch(Random.Range(1, 2))
-        {
-            case 1:
-                //The new random position
-                finalPosition[0] = newPositions[Random.Range(0, (conSize - 1))];
-                break;
-                //return newPositions[Random.Range(0, conSize)];
-                //break;
-            case 2:
-                //The base position, meaning the original position of the spawnposition
-                finalPosition[1] = pos[Random.Range(0, (conSize - 1))].transform.position;
-                break;
-                //return pos[Random.Range(0, conSize)].transform.position;
-                //break;
-        }
+        //switch(Random.Range(1, 2))
+        //{
+        //    case 1:
+        //        //The new random position
+        //        finalPosition[0] = newPositions[Random.Range(0, (pos.Length - 1))];
+        //        break;
+        //        //return newPositions[Random.Range(0, conSize)];
+        //        //break;
+        //    case 2:
+        //        //The base position, meaning the original position of the spawnposition
+        //        finalPosition[1] = pos[Random.Range(0, (pos.Length - 1))].transform.position;
+        //        break;
+        //        //return pos[Random.Range(0, conSize)].transform.position;
+        //        //break;
+        //}
 
         //Choose between the random position or the base position
-        return finalPosition[Random.Range(0, 1)];
+        return newPositions[Random.Range(0, (pos.Length - 1))];
+    }
+
+    Vector3 OriginalPosition(GameObject[] pos)
+    {
+        //Yes, I know the function name is "Original Position" yet we return a random position
+        //This will be fixed later
+        return pos[Random.Range(0, (pos.Length - 1))].transform.position;
     }
 
     void SetEnemyCountText()
