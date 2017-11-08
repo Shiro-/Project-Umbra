@@ -39,9 +39,9 @@ public class GameController : MonoBehaviour
     {
         RANDOM,
         ORIGINAL
-    };
+    }
 
-    public SpawningStyle style;
+    public SpawningStyle spawningStyle;
 
     void Awake()
     {
@@ -55,13 +55,13 @@ public class GameController : MonoBehaviour
         win = !win;
         totalEnemyCount = initialEnemyCount + randomEnemyCount;
         //https://docs.unity3d.com/Manual/Coroutines.html
-        switch(style)
+        switch(spawningStyle)
         {
-            case style.RANDOM:
+            case SpawningStyle.RANDOM:
                 StartCoroutine(InitialRandomEnemySpawn());
                 StartCoroutine(RandomEnemySpawn());
                 break;
-            case style.ORIGINAL:
+            case SpawningStyle.ORIGINAL:
                 StartCoroutine(InitialOriginalEnemySpawn());
                 StartCoroutine(OriginalEnemySpawn());
                 break;
