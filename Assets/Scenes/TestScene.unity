@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  enemyHP: 10
+  enemyHP: 50
   dmgMod: 1
   min: 0
 --- !u!1 &1619284758

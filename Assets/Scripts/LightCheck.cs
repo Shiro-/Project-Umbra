@@ -18,7 +18,7 @@ public class LightCheck : MonoBehaviour
     {
         //This array will collect anything with the GlobalLight tag like the room light or lightning flash
         lightObjs = GameObject.FindGameObjectsWithTag("GlobalLight");
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
     }
 	
 	// Update is called once per frame
