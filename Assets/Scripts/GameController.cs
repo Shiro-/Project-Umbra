@@ -148,7 +148,7 @@ public class GameController : MonoBehaviour
         //Spawn x enemies in random locations
         for (int i = 0; i < initialEnemyCount; i++)
         {
-            Instantiate(enemies[Random.Range(0, enemies.Length)], OriginalPosition(spawnPosition), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, (enemies.Length - 1))], OriginalPosition(spawnPosition), Quaternion.identity);
 
             check++;
         }
@@ -164,7 +164,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < randomEnemyCount; i++)
         {
             //Random ranges lol good joke
-            Instantiate(enemies[Random.Range(0, enemies.Length)], OriginalPosition(spawnPosition), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, (enemies.Length - 1))], OriginalPosition(spawnPosition), Quaternion.identity);
             yield return new WaitForSeconds(spawnTime);
 
             check++;
@@ -225,6 +225,16 @@ public class GameController : MonoBehaviour
     {
         //Yes, I know the function name is "Original Position" yet we return a random position
         //This will be fixed later
+
+        //The plan for this function is as follows
+        //If you want to create some sort of coordinated spawn or pattern it would be done here
+
+        //How I vision this being done:
+        //You set your spawn points in unity
+        //Then within another file, maybe a text document, you specify the order in which you want to spawn
+        //then we pass it to this function or the coroutine and make cool things happen
+
+        //For now leaving it like this is fine
         return pos[Random.Range(0, (pos.Length - 1))].transform.position;
     }
 
