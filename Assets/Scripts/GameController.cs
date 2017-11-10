@@ -234,6 +234,11 @@ public class GameController : MonoBehaviour
         //Then within another file, maybe a text document, you specify the order in which you want to spawn
         //then we pass it to this function or the coroutine and make cool things happen
 
+        //Notes:
+        /*
+         * Try case and switch stuff to create some sort of sequence?????
+         */
+
         //For now leaving it like this is fine
         return pos[Random.Range(0, (pos.Length - 1))].transform.position;
     }
