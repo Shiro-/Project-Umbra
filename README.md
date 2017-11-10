@@ -24,8 +24,13 @@ A blackout top-down shooter. The name (Project Umbra) is temporary and subject t
   - Win Condition
   - Weapon Sounds
   
- * Pre-Alpha Version 0.2a Features
-  - Screenshots and features Coming soon
+* Pre-Alpha Version 0.2a Features
+  - Random Enemy Spawner
+    - Random Spawn Style: Enemies will spawn in random positions based on the layout of the spawn points within Unity
+    - Original Spawn Style: Enemies will spawn directly on spawn points
+      - Note: it will choose a random original position as the spawn position. This will be changed in the future
+  - DAMAGE NUMBERS?
+  - etc.
 
 # Team
 * [Noel Eugenio](https://github.com/Shiro-) (Programmer, Artist)
