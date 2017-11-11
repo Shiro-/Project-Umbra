@@ -122,4 +122,24 @@ public class LightGun : MonoBehaviour
     //        lightGameObject.transform.position = pos;
     //    }
     //}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ContactPoint contact = collision.contacts[0];
+        Vector3 pos = contact.point;
+        GameObject lightTest = new GameObject("The Light");
+        Light lightcomp = lightTest.AddComponent<Light>();
+        lightcomp.intensity = 100;
+        lightcomp.color = Color.green;
+        lightTest.transform.position = pos;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "WispEnemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
