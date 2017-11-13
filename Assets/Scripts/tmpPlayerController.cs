@@ -43,7 +43,7 @@ public class tmpPlayerController : MonoBehaviour
 
         //https://docs.unity3d.com/ScriptReference/Input.GetKeyUp.html
         //This looks so bad and there is probably a better way to do this
-        if (Input.GetKeyUp(KeyCode.F) && flashlightBat > 0.0f)
+        if ((Input.GetKeyUp(KeyCode.F) || Input.GetButtonDown("Flashlight")) && flashlightBat > 0.0f)
         {
             flashlight.enabled = !flashlight.enabled;
             //flashCollider.enabled = !flashCollider.enabled;
@@ -90,6 +90,10 @@ public class tmpPlayerController : MonoBehaviour
             float rotation = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             rb.transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
+
+
+        //Controller aim/rotation
+
 
         //Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
         //rb.AddForce(movement * spd);

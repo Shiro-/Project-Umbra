@@ -88,7 +88,7 @@ public class Revolver : MonoBehaviour
         }
 
         //Moved reloading to update and removed fixedupdate
-        if (Input.GetKeyDown(KeyCode.R) && !reloading && currentRounds < maxRounds)
+        if ((Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("Reload")) && !reloading && currentRounds < maxRounds)
         {
             reloading = true;
             rTime = Time.time;
