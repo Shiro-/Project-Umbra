@@ -12,6 +12,7 @@ public class tmpPlayerController : MonoBehaviour
     //private Collider flashCollider;
     private Transform flashT;
 
+    //Controller functionality
     private bool controllerMode;
     private Vector3 lastMousePos;
 
@@ -87,6 +88,8 @@ public class tmpPlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane mousePlane = new Plane(Vector3.up, Vector3.zero);
         float distance;
+
+        //Won't update aim using mouse cursor unless the mouse has moved (allows controller aiming)
         if (mousePlane.Raycast(ray, out distance) && lastMousePos != Input.mousePosition)
         {
             Vector3 target = ray.GetPoint(distance);
@@ -98,7 +101,6 @@ public class tmpPlayerController : MonoBehaviour
         lastMousePos = Input.mousePosition;
 
         //Controller aim/rotation
-        //Need switch between keyboard/controller
         if (Input.GetAxis("Right Horizontal") != 0.0f || Input.GetAxis("Right Vertical") != 0.0f)
         {
             controllerMode = true;
