@@ -12,6 +12,9 @@ public class tmpPlayerController : MonoBehaviour
     //private Collider flashCollider;
     private Transform flashT;
 
+    private bool controllerMode;
+    private Vector3 lastMousePos;
+
     public Light flashlight;
 
     public int playerHP;
@@ -57,7 +60,8 @@ public class tmpPlayerController : MonoBehaviour
             {
                 flashT.Translate(new Vector3(0f, 0f, 10f));
             }
-                
+
+
         }
 
         if (flashlight.enabled && flashlightBat > 0.0f)
@@ -83,7 +87,7 @@ public class tmpPlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane mousePlane = new Plane(Vector3.up, Vector3.zero);
         float distance;
-        if (mousePlane.Raycast(ray, out distance))
+        if (mousePlane.Raycast(ray, out distance) && lastMousePos != Input.mousePosition)
         {
             Vector3 target = ray.GetPoint(distance);
             Vector3 dir = target - transform.position;
@@ -91,11 +95,16 @@ public class tmpPlayerController : MonoBehaviour
             rb.transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
 
+        lastMousePos = Input.mousePosition;
 
         //Controller aim/rotation
         //Need switch between keyboard/controller
-        Vector3 shootDir = Vector3.right * Input.GetAxis("Right Horizontal") + Vector3.forward * Input.GetAxis("Right Vertical");
-        rb.transform.rotation = Quaternion.LookRotation(shootDir, Vector3.up);
+        if (Input.GetAxis("Right Horizontal") != 0.0f || Input.GetAxis("Right Vertical") != 0.0f)
+        {
+            controllerMode = true;
+            Vector3 shootDir = Vector3.right * Input.GetAxis("Right Horizontal") + Vector3.forward * Input.GetAxis("Right Vertical");
+            rb.transform.rotation = Quaternion.LookRotation(shootDir, Vector3.up);
+        }
 
         //Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
         //rb.AddForce(movement * spd);
