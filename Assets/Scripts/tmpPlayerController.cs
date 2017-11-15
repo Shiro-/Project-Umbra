@@ -93,7 +93,9 @@ public class tmpPlayerController : MonoBehaviour
 
 
         //Controller aim/rotation
-
+        //Need switch between keyboard/controller
+        Vector3 shootDir = Vector3.right * Input.GetAxis("Right Horizontal") + Vector3.forward * Input.GetAxis("Right Vertical");
+        rb.transform.rotation = Quaternion.LookRotation(shootDir, Vector3.up);
 
         //Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
         //rb.AddForce(movement * spd);
