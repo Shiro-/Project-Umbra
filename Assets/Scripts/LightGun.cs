@@ -103,34 +103,4 @@ public class LightGun : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter(Collision other, Collider otherx)
-    //{
-    //    if(otherx.tag == "Something")
-    //    {
-    //        //Create a light on the position of the game object
-    //        ContactPoint contact = other.contacts[0];
-    //        Vector3 pos = contact.point;
-
-    //        //Light
-    //        //Testing for the implementation of a new weapon type
-    //        //https://docs.unity3d.com/ScriptReference/Light.html
-    //        //Instantiate(light object?, position, rotation);
-    //        GameObject lightGameObject = new GameObject("The Light");
-    //        Light lightComp = lightGameObject.AddComponent<Light>();
-    //        lightComp.intensity = 100;
-    //        lightComp.color = Color.red;
-    //        lightGameObject.transform.position = pos;
-    //    }
-    //}
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        ContactPoint contact = collision.contacts[0];
-        Vector3 pos = contact.point;
-        GameObject lightTest = new GameObject("The Light");
-        Light lightcomp = lightTest.AddComponent<Light>();
-        lightcomp.intensity = 100;
-        lightcomp.color = Color.green;
-        lightTest.transform.position = pos;
-    }
 }
