@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
     private int check;
     private int totalEnemyCount;
 
+    private float winTimer;
+
     private bool win;
 
     public enum SpawningStyle
@@ -86,13 +88,16 @@ public class GameController : MonoBehaviour
                 //This will be changed in the future with something better
                 check = 0;
                 win = !win;
+                winTimer = 0.0f;
             }
         }
+
+        winTimer++;
 
         //Change scene moved here
         //If you add additional scenes you need to add it to the build settings so we can load it
         //File > Build Settings > Add Scene
-        if(winLight.enabled == true /*&& Input.GetKeyUp(KeyCode.Space)*/)
+        if (winLight.enabled == true && winTimer > 200.0f/*&& Input.GetKeyUp(KeyCode.Space)*/)
         {
             SceneManager.LoadScene("Nice");
         }
