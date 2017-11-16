@@ -133,13 +133,4 @@ public class LightGun : MonoBehaviour
         lightcomp.color = Color.green;
         lightTest.transform.position = pos;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "WispEnemy")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-    }
 }
