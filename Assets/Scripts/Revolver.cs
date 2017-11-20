@@ -26,7 +26,9 @@ public class Revolver : MonoBehaviour
     public float audioLevel;
 
     private AudioClip fire;
+    private AudioClip fire_empty;
     private AudioClip reload;
+    private AudioClip reload_end;
 
     // Use this for initialization
     void Start()
@@ -40,7 +42,9 @@ public class Revolver : MonoBehaviour
 
         //Revolver sounds needed: maybe reload end/interrupt 
         fire = Resources.Load<AudioClip>("Sounds/GDC2016/Bullet-Time-14");
+        fire_empty = Resources.Load<AudioClip>("Sounds/GDC2016/no_ammo");
         reload = Resources.Load<AudioClip>("Sounds/GDC2016/revolver_load_1");
+        reload_end = Resources.Load<AudioClip>("Sounds/GDC2016/revolver_reload_end");
     }
 
     // Update is called once per frame
@@ -53,13 +57,20 @@ public class Revolver : MonoBehaviour
             {
                 reloading = false;
                 rTime = Time.time;
+
+                pAudio.clip = reload_end;
+                pAudio.PlayOneShot(reload_end, audioLevel);
             }
-            else if (Time.time - lastFire > fireRate && currentRounds > 0 && Time.time - rTime > interruptDelay)
+            else if (currentRounds <= 0)
+            {
+                pAudio.clip = fire_empty;
+                pAudio.PlayOneShot(fire_empty, audioLevel);
+            }
+            else if (Time.time - lastFire > fireRate && Time.time - rTime > interruptDelay)
             { 
                 currentRounds--;
 
                 pAudio.clip = fire;
-                //pAudio.Play();
                 pAudio.PlayOneShot(fire, audioLevel);
 
                 //The Bullet instantiation happens here.
@@ -84,7 +95,7 @@ public class Revolver : MonoBehaviour
 
                 //Bullets self destruct after x seconds
                 Destroy(tmpBulletHandler, 5.0f);
-            }
+            } 
         }
 
         //Moved reloading to update and removed fixedupdate
@@ -107,6 +118,9 @@ public class Revolver : MonoBehaviour
             if (currentRounds >= maxRounds)
             {
                 reloading = false;
+
+                pAudio.clip = reload_end;
+                pAudio.PlayOneShot(reload_end, audioLevel);
             }
         }
     }
