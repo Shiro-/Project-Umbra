@@ -30,22 +30,14 @@ A blackout top-down shooter. The name (Project Umbra) is temporary and subject t
   - Win Condition
   - Weapon Sounds
   
-* Pre-Alpha Version 0.2a Features
-  - Random Enemy Spawner
-    - Random Spawn Style: Enemies will spawn in random positions based on the layout of the spawn points within Unity
-    - Original Spawn Style: Enemies will spawn directly on spawn points
-      - Note: it will choose a random original position as the spawn position. This will be changed in the future
-  - DAMAGE NUMBERS?
-  - etc.
-  
-  # Art Progress
-  ### Art Direction
-  ![Maya Image](https://raw.githubusercontent.com/Shiro-/Project-Umbra/master/Images/Maya001.png)
-  * Description
-    - At this point in time we are still in debate on what the art style for the game should be
-    - Here is our first test for what the game should feel like
-      - Currently it is not much but we feel a low poly art direction would be best suited of our needs
-      - More information to come...
+# Art Progress
+### Art Direction
+![Maya Image](https://raw.githubusercontent.com/Shiro-/Project-Umbra/master/Images/Maya001.png)
+* Description
+  - At this point in time we are still in debate on what the art style for the game should be
+  - Here is our first test for what the game should feel like
+    - Currently it is not much but we feel a low poly art direction would be best suited of our needs
+    - More information to come...
 
 # Team
 * [Noel Eugenio](https://github.com/Shiro-) (Programmer, Artist)
