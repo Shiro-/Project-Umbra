@@ -1,68 +1,56 @@
-﻿//Shader "Custom/Transparent"
-//{
-//	Properties
-//	{
-//		_Color("Color", Color) = (1,1,1,1)
-//		_MainTex("Albedo (RGB)", 2D) = "white" {}
-//		_Alpha("Alpha Value", Range(0.0, 1.0)) = 1.0
-//	}
-//		SubShader
-//		{
-//			Pass
-//			{
-//			Blend SrcAlpha OneMinusSrcAlpha
-//
-//			Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
-//			LOD 200
-//
-//			CGPROGRAM
-//
-//			// Use shader model 3.0 target, to get nicer looking lighting
-//			#pragma target 3.0
-//			#pragma fragment frag
-//
-//			sampler2D _MainTex;
-//			uniform float _Alpha;
-//			uniform half4 _Color;
-//
-//			/*half4 frag() : COLOR
-//			{
-//				_Color.a = _Alpha;
-//				float4 col = _Color;
-//
-//				return col;
-//			}*/
-//
-//			/*struct Input
-//			{
-//				float2 uv_MainTex;
-//			};
-//
-//			void sur(Input IN, inout SurfaceOutput o)
-//			{
-//				_Color.a = _Alpha;
-//				o.Albedo = _Color.rgb;
-//				o.Alpha = _Color.a;
-//			}*/
-//			ENDCG
-//			}
-//		}
-//			FallBack "Diffuse"
-//}
-
-Shader "Custom/Transparent"
+﻿Shader "Custom/Transparent"
 {
 	Properties
 	{
-
+		_Color("Main Color", Color) = (1.0, 1.0, 1.0, 1.0)
+		_MainTex("Main Texture", 2D) = "white" {}
+		_Alpha("Alpha Value", Range(0.0, 1.0)) = 1.0
 	}
 
-	SubShader
-	{
-		Pass
+		SubShader
 		{
-		CGPROGRAM
-		ENDCG
+			Tags {"Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
+
+			//Render passes
+			Pass
+			{
+				Blend SrcAlpha OneMinusSrcAlpha
+
+				CGPROGRAM
+				#pragma vertex vert
+				#pragma fragment frag
+
+				uniform sampler2D _MainTex;
+				
+				uniform half4 _Color;
+				uniform float _Alpha;
+
+				struct vertexInput
+				{
+					float4 vertex : POSITION;
+					float4 texcoord : TEXCOORD0;
+				};
+
+				struct vertexOutput
+				{
+					float4 pos : SV_POSITION;
+					float4 texcoord : TEXCOORD0;
+				};
+
+				vertexOutput vert(vertexInput v)
+				{
+					vertexOutput o;
+					o.pos = UnityObjectToClipPos(v.vertex);
+					return o;
+				}
+
+				half4 frag(vertexOutput i) : COLOR
+				{
+					float4 col = _Color;
+					col.a = _Alpha;
+					return col;
+				}
+			ENDCG
 		}
 	}
 }
