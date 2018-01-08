@@ -17,6 +17,8 @@ public class Door : MonoBehaviour
     public SideOfRotation RotationSide;
     [Tooltip("Rotating speed of the door/window.")]
     public float Speed = 3F;
+    [Tooltip("0 = don't close")]
+    public float closeTime = 1.0f;
     [Tooltip("0 = infinite times")]
     public int TimesMoveable = 0;
 
@@ -50,10 +52,12 @@ public class Door : MonoBehaviour
     // An offset to take into account the original rotation of a 3rd party door
     Quaternion RotationOffset;
 
+    private float openTime = 0.0f;
+    //Should maybe be public if we ever want doors that start opened for some reason
+    private bool isOpen = false;
+
     void Start()
     {
-        //gameObject.tag = "Door";
-
         RotationOffset = transform.rotation;
 
         if (HingeType == TypeOfHinge.Centered)
@@ -201,15 +205,33 @@ public class Door : MonoBehaviour
         RotationPending = false;
     }
 
+    void FixedUpdate()
+    {
+        if (Time.time - openTime > closeTime && isOpen == true)
+        {
+            StartCoroutine(Move());
+            isOpen = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        //For now we will just destroy ourselves and the enemy
-        //for future reference we will have hp and other things
+        //For the time being opens automatically when touched
         if (other.tag == "Player")
         {
             StartCoroutine(Move());
         }
-        //Changed tags to prepare for different enemies
-        //and also hp values for the player
+        isOpen = !isOpen;
     }
+
+
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    //Door can close if player is leaving
+    //    if (other.tag == "Player")
+    //    {
+    //        StartCoroutine(Move());
+    //    }
+    //}
 }
