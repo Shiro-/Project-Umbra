@@ -7,6 +7,9 @@ public class DummyPlayerController : MonoBehaviour
     //Testing, subject to change
     public float spd;
 
+    public GameObject boundaryX;
+    public GameObject boundaryZ;
+
     private float moveX;
     private float moveZ;
 
@@ -40,8 +43,12 @@ public class DummyPlayerController : MonoBehaviour
          * https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html
          */
         Vector3 position = transform.position;
-        position.x = Mathf.Clamp(position.x + moveX, -14.0f, 14.0f);
-        position.z = Mathf.Clamp(position.z + moveZ, -14.0f, 14.0f);
+        //position.x = Mathf.Clamp(position.x + moveX, -14.0f, 14.0f);
+        //position.z = Mathf.Clamp(position.z + moveZ, -14.0f, 14.0f);
+
+        position.x = Mathf.Clamp(position.x + moveX, -(boundaryX.transform.position.x), boundaryX.transform.position.x);
+        position.z = Mathf.Clamp(position.z + moveZ, -(boundaryZ.transform.position.z), boundaryZ.transform.position.z);
+
         transform.position = position;
     }
 }
