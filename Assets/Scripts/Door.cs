@@ -55,6 +55,7 @@ public class Door : MonoBehaviour
     private float openTime = 0.0f;
     //Should maybe be public if we ever want doors that start opened for some reason
     private bool isOpen = false;
+    private bool playerIn = false;
 
     void Start()
     {
@@ -207,7 +208,7 @@ public class Door : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Time.time - openTime > closeTime && isOpen == true)
+        if (Time.time - openTime > closeTime && isOpen == true && playerIn == false)
         {
             StartCoroutine(Move());
             isOpen = false;
@@ -219,12 +220,21 @@ public class Door : MonoBehaviour
         //For the time being opens automatically when touched
         if (other.tag == "Player")
         {
+            playerIn = true;
             StartCoroutine(Move());
         }
         isOpen = !isOpen;
     }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        //For the time being opens automatically when touched
+        if (other.tag == "Player")
+        {
+            playerIn = false;
+            //StartCoroutine(Move());
+        }
+    }
 
     //private void OnTriggerExit(Collider other)
     //{
