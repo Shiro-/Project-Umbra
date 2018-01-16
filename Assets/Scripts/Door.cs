@@ -57,9 +57,23 @@ public class Door : MonoBehaviour
     private bool isOpen = false;
     private bool playerIn = false;
 
+    private AudioSource dAudio;
+
+    [Range(0.0f, 1.0f)]
+    public float audioLevel;
+
+    private AudioClip open;
+    private AudioClip close;
+
+
     void Start()
     {
         RotationOffset = transform.rotation;
+
+        dAudio = GetComponent<AudioSource>();
+
+        open = Resources.Load<AudioClip>("Sounds/GDC2016/door_open_1");
+        close = Resources.Load<AudioClip>("Sounds/GDC2016/door_close_1");
 
         if (HingeType == TypeOfHinge.Centered)
         {
@@ -208,10 +222,14 @@ public class Door : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Time.time - openTime > closeTime && isOpen == true && playerIn == false)
+        //Close door if auto-close time elapses and player isn't too close
+        if (Time.time - openTime > closeTime && isOpen == true && playerIn == false && closeTime != 0.0f)
         {
             StartCoroutine(Move());
             isOpen = false;
+
+            dAudio.clip = close;
+            dAudio.PlayOneShot(close, audioLevel);
         }
     }
 
@@ -222,6 +240,9 @@ public class Door : MonoBehaviour
         {
             playerIn = true;
             StartCoroutine(Move());
+
+            dAudio.clip = open;
+            dAudio.PlayOneShot(open, audioLevel);
         }
         isOpen = !isOpen;
     }
