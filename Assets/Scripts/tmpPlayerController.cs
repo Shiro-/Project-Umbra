@@ -17,6 +17,7 @@ public class tmpPlayerController : MonoBehaviour
     private Vector3 lastMousePos;
 
     public Light flashlight;
+    public float lightIntensity;
 
     public int playerHP;
     public float flashlightBat;
@@ -74,6 +75,10 @@ public class tmpPlayerController : MonoBehaviour
                 flashlight.enabled = !flashlight.enabled;
             }
         }
+
+        //Light flicker
+        flashlight.GetComponent<Light>().intensity = lightIntensity
+            / 2f + Mathf.Lerp(lightIntensity - 0.6f, lightIntensity + 0.6f, Mathf.Cos(Time.time * 30));
     }
 
     //Called before Physics step
