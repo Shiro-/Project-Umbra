@@ -16,8 +16,10 @@ public class tmpPlayerController : MonoBehaviour
     private bool controllerMode;
     private Vector3 lastMousePos;
 
+    //Lamp stuff
     public Light flashlight;
-    public float lightIntensity;
+    public float lightLevel;
+    private float lightIntensity;
 
     public int playerHP;
     public float flashlightBat;
@@ -38,6 +40,8 @@ public class tmpPlayerController : MonoBehaviour
         flashT = flashCone.GetComponent<Transform>();
         //Flashlight is off to start, so we lower it at the beginning
         flashT.Translate(new Vector3(0f, 0f, -10f));
+
+        lightIntensity = lightLevel;
     }
 
     //Updates every frame
@@ -76,9 +80,12 @@ public class tmpPlayerController : MonoBehaviour
             }
         }
 
+        //Give a bit of variance so the light isn't flickering between the same intensity all the time
+        lightIntensity = Random.Range(lightLevel - 0.3f, lightLevel + 0.3f);
+
         //Light flicker
         flashlight.GetComponent<Light>().intensity = lightIntensity
-            / 2f + Mathf.Lerp(lightIntensity - 0.6f, lightIntensity + 0.6f, Mathf.Cos(Time.time * 30));
+            / 2f + Mathf.Lerp(lightIntensity - 0.6f, lightIntensity + 0.3f, Mathf.Cos(Time.time * 30));
     }
 
     //Called before Physics step
