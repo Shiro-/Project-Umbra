@@ -101,6 +101,11 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("Nice");
         }
+
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+        {
+            Time.timeScale = 0;
+        }
     }
 
     //Initially, we want to spawn x amount of enemies before we randomly spawn them
