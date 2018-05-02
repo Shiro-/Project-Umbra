@@ -1,3 +1,5 @@
+# Currently on hiatus due to various issues with the code and design. We plan on returning to this idea in the near future.
+
 ![PROJECT UMBRA](https://raw.githubusercontent.com/Shiro-/Project-Umbra/master/Images/coolpic.png)
 
 # Description
